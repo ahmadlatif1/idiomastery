@@ -33,16 +33,16 @@ def serve_create(request):
 
 def register(request):
 
-    errors=User.objects.validateregistry(postdata=request.POST)
+    errors=User.objects.user_validator(post=request.POST)
     if len(errors)>0:
         return redirect('/',errors)
     # validate input
     password= request.POST['password']
     pw_hash=bcrypt.hashpw(password.encode('utf-8'),bcrypt.gensalt()).decode('utf-8')
-    first_name=request.POST['first_name']
-    last_name=request.POST['last_name']
+    firstname=request.POST['firstname']
+    lastname=request.POST['lastname']
     email=request.POST['email']
-    User.objects.create(first_name=first_name,last_name=last_name,email=email,password=pw_hash)
+    User.objects.create(first_name=firstname,last_name=lastname,email=email,password=pw_hash)
 
     request.session['userid']=User.objects.get(email=email).id
     return redirect("/")
@@ -69,10 +69,17 @@ def create(request):
     phrase=request.POST['phrase']
     meaning=request.POST['meaning']
     example=request.POST['example']
-    description=request.POST['description']
-    tags=request.POST['tags'] # this should be a list of tags, but for now we will just take it as a string
+    origin=request.POST['origin']
+    # we handle adding tags by separating them by commas in the input field
+    tags_string=request.POST['tags']
+
     user=User.objects.get(id=request.session['userid'])
-    Idiom.objects.create(phrase=phrase, meaning=meaning, example=example, description=description, tags=tags, user=user)
+    idiom=Idiom.objects.create(phrase=phrase, meaning=meaning, example=example, descriptoriginion=origin, user=user)
+
+    tags_list = [tag.strip() for tag in tags_string.split(',')]
+    for tag_name in tags_list:
+
+        idiom.tags.add(Tag.objects.get(name=tag_name))
 
     return redirect("/")
 
@@ -90,7 +97,7 @@ def edit(request, id):
     idiom.phrase = request.POST['phrase']
     idiom.meaning = request.POST['meaning']
     idiom.example = request.POST['example']
-    idiom.description = request.POST['description']
+    idiom.origin = request.POST['origin']
     idiom.tags = request.POST['tags'] # this should be a list of tags, but for now we will just take it as a string
     idiom.save()
 
