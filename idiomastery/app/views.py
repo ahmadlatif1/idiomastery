@@ -102,3 +102,4 @@ def edit(request, id):
     idiom.save()
 
     return redirect("/")
+
