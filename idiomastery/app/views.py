@@ -2,7 +2,7 @@ import bcrypt
 from django.shortcuts import redirect, render
 from app.models import *
 
-# Create your views here.
+# names arent final 
 def index(request):
     return render(request, 'index.html', {})
 
@@ -10,7 +10,7 @@ def serve_explore(request):
     return render(request, 'explore.html', {})
 
 def serve_login(request):
-    return render(request, 'login.html', {})
+    return render(request, 'login_page.html', {})
 
 def serve_registration(request):
     return render(request, 'registration.html', {})
@@ -98,7 +98,7 @@ def edit(request, id):
     idiom.meaning = request.POST['meaning']
     idiom.example = request.POST['example']
     idiom.origin = request.POST['origin']
-    idiom.tags = request.POST['tags'] # this should be a list of tags, but for now we will just take it as a string
+
     idiom.save()
 
     return redirect("/")
