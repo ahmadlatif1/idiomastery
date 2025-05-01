@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Log In</title>
+</head>
+<header>
+    <div class="header">
+        <div class="logo">IDIOMASTERY</div>
+        <nav class="nav-links">
+          <a href="#">About</a>
+          <span class="separator">|</span>
+          <a href="#">Quizzes</a>
+        </nav>
+        <div class="auth-link">
+          <a href="#">Sign up</a>
+        </div>
+  </header>
+
+  <div class="form-container">
+    <h1>Register your account</h1>
+    <p>
+      Or <a href="#">click here</a> to login if you already have an existing account.
+    </p>
+    <form>
+      <input type="text" placeholder="First name" required />
+      <input type="text" placeholder="Last name" required />
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <input type="password" placeholder="Confirm password" required />
+      <button type="submit">Sign up</button>
+    </form>
+  </div>
