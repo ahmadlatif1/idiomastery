@@ -1,8 +1,9 @@
-from django.shortcuts import render
+import bcrypt
+from django.shortcuts import redirect, render
+from app.models import *
 
-# names arent final 
+# Create your views here.
 def index(request):
-
     return render(request, 'index.html', {})
 
 def serve_explore(request):
@@ -97,9 +98,7 @@ def edit(request, id):
     idiom.meaning = request.POST['meaning']
     idiom.example = request.POST['example']
     idiom.origin = request.POST['origin']
-
+    idiom.tags = request.POST['tags'] # this should be a list of tags, but for now we will just take it as a string
     idiom.save()
 
     return redirect("/")
-
-

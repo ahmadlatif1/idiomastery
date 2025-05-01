@@ -5,7 +5,7 @@ body {
   
   .header {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-around;
     align-items: center;
     background-color: #a3cf8f; 
     padding: 10px 20px;
@@ -36,4 +36,64 @@ body {
 .auth-link a {
   text-decoration: none;
   color: #0645AD;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.login-container h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.login-container p {
+  margin-bottom: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #999;
+  border-radius: 2px;
+  font-size: 14px;
+}
+
+button {
+  padding: 10px;
+  background-color: #f8f4d6;
+  border: 1px solid #999;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 3px;
+}
+
+button:hover {
+  background-color: #e6e1b8;
+}
+
+.signup-text {
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.signup-text a {
+  text-decoration: underline;
+  color: #007bff;
+  font-size: 12px;
 }
