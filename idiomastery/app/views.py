@@ -1,9 +1,8 @@
-import bcrypt
-from django.shortcuts import redirect, render
-from app.models import *
+from django.shortcuts import render
 
 # names arent final 
 def index(request):
+
     return render(request, 'index.html', {})
 
 def serve_explore(request):
@@ -102,4 +101,5 @@ def edit(request, id):
     idiom.save()
 
     return redirect("/")
+
 
