@@ -10,7 +10,7 @@ def serve_explore(request):
     return render(request, 'explore.html', {})
 
 def serve_login(request):
-    return render(request, 'login.html', {})
+    return render(request, 'login_page.html', {})
 
 def serve_registration(request):
     return render(request, 'registration.html', {})
@@ -102,4 +102,3 @@ def edit(request, id):
     idiom.save()
 
     return redirect("/")
-
