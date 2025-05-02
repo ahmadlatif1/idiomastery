@@ -10,7 +10,7 @@ def serve_explore(request):
     return render(request, 'explore.html', {})
 
 def serve_login(request):
-    return render(request, 'login_page.html', {})
+    return render(request, 'login.html', {})
 
 def serve_registration(request):
     return render(request, 'registration.html', {})
@@ -32,7 +32,7 @@ def serve_create(request):
     return render(request, 'create.html', {})
 
 def register(request):
-
+    # NOTE TO MAKE SURE TO ADD CONFIRM PASSWORD TO VALIDATION
     errors=User.objects.user_validator(post=request.POST)
     if len(errors)>0:
         return redirect('/',errors)
