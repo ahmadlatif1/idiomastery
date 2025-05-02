@@ -1,127 +1,158 @@
+/* 
+Color palette: 
+
+Main (nav bar): green #A0C878  
+
+secondary (buttons, small elements): pale lime #f0f1c5 
+
+auxiliary (background for contrast with elements): darker eggshell #FAF6E9 
+
+auxiliary second (background for login): lighter eggshell #FFFDF6 
+
+*/
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Balsamiq Sans";
+}
+
 body {
-    margin: 0;
-    font-family: sans-serif;
-  }
+  display: flex;
+  flex-flow: column;  
+  align-items: center;
+}
+
+.registerpage,.loginpage{
+  background-color: #FFFDF6 ;
+}
+
+.aboutpage,.createpage,.explorepage,.profilepage{
+  background-color: #FAF6E9 ;
+}
+
+.bodylimit{
+  width: 100%;
+  max-width: 1200px; /* make sure this is same as the nav bar limit */
+
+}
+
   
-  .header {
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-    background-color: #a3cf8f; 
-    padding: 10px 20px;
-  }
+header{
+  width: 100%;
+  background-color: #A0C878; 
+
+  display: flex;
+  justify-content: center;
+
+
+  
+}
+.header {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  padding: 10px;
+}
   
 .logo {
-    font-weight: bold;
-    font-size: 1.5em;
+    font-weight: 800;
+    font-size: 2em;
     color: #333;
   }
   
 .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  display: flex;
+  align-items: center;
+  gap: 8px;
   
-.nav-links a {
+  a{
     text-decoration: none;
     color: #0645AD; 
     font-weight: normal;
+  }
+  .separator{
+    color: #333;
+
+  }
 }
-  
-.nav-links .separator {
- color: #333;
-}
+
 
 .auth-link a {
   text-decoration: none;
   color: #0645AD;
 }
 
-.login-container {
-  max-width: 400px;
-  margin: 80px auto;
-  padding: 20px;
-  text-align: center;
-}
-
-.login-container h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.login-container p {
-  margin-bottom: 25px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-
-label {
-  margin-bottom: 5px;
-  font-weight: bold;
-}
 
 input {
   padding: 10px;
-  margin-bottom: 15px;
   border: 1px solid #999;
   border-radius: 2px;
   font-size: 14px;
 }
 
-button {
+.submitbutton {
   padding: 10px;
-  background-color: #f8f4d6;
+  background-color: #f0f1c5;
   border: 1px solid #999;
   cursor: pointer;
   font-size: 16px;
   border-radius: 3px;
+
+  :hover{
+    background-color: #e6e1b8;
+  }
 }
 
-button:hover {
-  background-color: #e6e1b8;
-}
 
 .signup-text {
   margin-top: 20px;
   font-size: 12px;
+
+  a{
+    text-decoration: underline;
+    color: #007bff;
+    font-size: 12px;
+  }
 }
 
-.signup-text a {
-  text-decoration: underline;
-  color: #007bff;
-  font-size: 12px;
-}
+
 
 .form-container {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.form-container h1 {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.form-container p {
-  margin-top: 10px;
-  font-size: 0.95rem;
-}
-
-.form-container form {
-  margin-top: 20px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
+  justify-content: center;
   align-items: center;
+  padding: 40px 20px;
+
+  gap: 10px;
+  max-width: 400px;
+
+  h1{
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  p{
+    font-size: 0.95rem;
+
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 }
+
+
+
 
 input {
-  margin: 10px 0;
   padding: 12px;
   width: 300px;
   font-size: 1rem;
@@ -129,13 +160,5 @@ input {
   border-radius: 3px;
 }
 
-button {
-  margin-top: 20px;
-  padding: 10px 30px;
-  background-color: #f4f4d1;
-  border: 1px solid #999;
-  cursor: pointer;
-  border-radius: 4px;
-}
 
 
