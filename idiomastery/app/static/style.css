@@ -31,12 +31,126 @@ body {
 .aboutpage,.createpage,.explorepage,.profilepage{
   background-color: #FAF6E9 ;
 }
-
+.card{
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+}
 .bodylimit{
   width: 100%;
   max-width: 1200px; /* make sure this is same as the nav bar limit */
 
 }
+
+.explorebody{
+  display: flex;
+  padding: 80px 0;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.widesection{
+  width: 75%;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: stretch;
+  align-items: center;
+  gap: 10px;
+
+  .card{
+    width: 100%;
+  }
+
+}
+.sidesection{
+  width: 25%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 30px;
+
+  .card{
+    width: 100%;
+  }
+}
+
+
+.add-idiom-card{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 20px;
+
+  font-size: 1.8em;
+  gap: 20px;
+  height: 200px;
+
+}
+
+
+
+.idiomcard{
+  display: flex;
+  flex-flow: column;
+
+  padding: 20px;
+  min-height: 200px;
+  justify-content: space-between;
+  
+
+  .idiomhead{
+
+    display: flex;
+    justify-content: space-between;
+
+    .idiom-phrase{
+      font-size: 2.2em;
+      font-weight: 600;
+    }
+  }
+
+  .idiombody{
+    font-size: 1.4em;
+  }
+  .idiomcardbottom{
+    display: flex;
+    justify-content: space-between;
+    span{
+      font-size: 1.2em;
+    }
+  }
+
+}
+.tag{
+  background-color: #f0f1c5;
+  border: 2px solid black;
+  border-radius: 15px;
+  height: 30px;
+  padding: 4px 15px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 1px 2px 3px #777;
+}
+.taglist{
+  display: flex;
+  flex-flow: row wrap;
+
+}
+.populartags{
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  min-height: 100px;
+  padding: 0px 10px;
+}
+
 
   
 header{
@@ -97,10 +211,10 @@ input {
 .submitbutton {
   padding: 10px;
   background-color: #f0f1c5;
-  border: 1px solid #999;
+  border: 2px solid black;
   cursor: pointer;
   font-size: 16px;
-  border-radius: 3px;
+  border-radius: 10px;
 
   :hover{
     background-color: #e6e1b8;
