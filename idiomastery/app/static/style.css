@@ -263,7 +263,13 @@ input {
   }
 }
 
-
+textarea{
+  padding: 10px;
+  border: 1px solid #999;
+  border-radius: 2px;
+  font-size: 14px;
+  resize: none;
+}
 
 
 input {
@@ -274,5 +280,82 @@ input {
   border-radius: 3px;
 }
 
+.createbox{
+  margin-top: 50px;
+  width: 800px;
+  height: 700px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: #FFFDF6;
+  display: flex;
+  flex-flow: column;
+  padding: 40px 20px;
+
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  
+  }
+  input {
+    padding: 12px;
+    width: 700px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  #idiom{
+    border: 1px solid #a9a9a9;
+  }
+  #meaning{
+    width: 700px;
+    height: 100px;
+  }
+  #example{
+    width: 700px;
+    height: 100px;
+  }
+
+  #origin{
+    width: 700px;
+    height: 300px;
+  }
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 25px ;
+  
+  
+}
 
 
+.guidelines{
+  margin-top: 50px;
+  width: 350px;
+  height: 1000px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: #FFFDF6;
+  margin-bottom: 50px;
+
+  h2{
+    text-align: center;
+    padding: 40px 20px;
+  }
+  h4{
+    padding: 1px 20px;
+  }
+  ul{
+    padding: 20px;
+  }
+}
+
+.createbody{
+  display: flex;
+justify-content: space-between;
+}
