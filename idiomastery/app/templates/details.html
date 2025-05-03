@@ -8,7 +8,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body class="explorepage"> 
+<body class="detailpage"> 
     <header>
         <div class="header">
             <div class="header-start">
@@ -38,9 +38,9 @@
             </div>
         </div>
     </header>
-    <div class="explorebody bodylimit" >
+    <div class="detailbody bodylimit" >
         <div class="widesection">
-            {% for idiom in idioms %}
+            
             <div class="idiomcard card">
                 <div class="idiomhead">
                     <span class="idiom-phrase">{{idiom.phrase}}</span>
@@ -54,8 +54,7 @@
                     {% endif %}
                 </div>
                 <div class="idiomcardbottom">
-                    <span><a class="keepblue nodecoration" href="/{{idiom.id}}">Read More</a></span>
-                    <span class="authorsubtitle">written by: <a class="nodecoration keepblue" href="/profile/{{idiom.user.id}}">{{idiom.user.firstname}} {{idiom.user.lastname}} </a> ({{idiom.created_at|date:'Y-m-d'}})</span>
+                    <span></span>
                     <div class="taglist">
                         <div class="tag">tag</div>
                         {% comment %} add first 2-3 tags {% endcomment %}
@@ -63,17 +62,38 @@
                 </div>
 
             </div>
-            {% endfor %}
+            {% if idiom.origin != '' %}
+            <div class="origincard card">
+                <span class="origin-title">Origin</span>
+                <p class="origin-body">{{idiom.origin}}</p>
+
+            </div>
+            {% endif %}
+
+            <div class="translations-container card">
+                <span class="translationtitle">Translations</span>
+                <div class="translationcard card">
+                    <span>test text translation</span>
+                </div>
+            </div>
+            
+            
         </div>
         <div class="sidesection">
             <div class="card add-idiom-card">
                 <span>do you have an idiom?</span>
                 <a class="submitbutton" href="/create/"> Add it Here!</a>
             </div>
-            <div class="populartags">
-                <h1>Popular tags</h1>
-                <div class="taglist">
-                    <div class="tag">tag text</div>
+            <div class="sidecardcontainer">
+                <span>Similarly Tagged</span>
+                <div class="sidecard card">
+
+                </div>
+            </div>
+            <div class="sidecardcontainer">
+                <span>Equivalent Idioms</span>
+                <div class="sidecard card">
+
                 </div>
             </div>
         </div>
