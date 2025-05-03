@@ -33,9 +33,9 @@ class IdiomManager(models.Manager):
             errors['phrase'] = "Idioms should be at least 3 characters"
         if len(post['meaning'])<5:
             errors['meaning'] = "Meanings should be at least 5 characters"
-        if len(post['example'])<10:
+        if 0<len(post['example'])<10:
             errors['example'] = "Examples should be at least 10 characters"
-        if len(post['origin'])<10:
+        if 0<len(post['origin'])<10:
             errors['origin'] = "The origin/history should be at least 10 characters"
 
         return errors
@@ -59,6 +59,7 @@ class Idiom(models.Model):
     user= models.ForeignKey(User, related_name="idioms", on_delete = models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True) 
     updated_at=models.DateTimeField(auto_now=True)
+    objects=IdiomManager()
 
 class Translation(models.Model):
     score=models.IntegerField

@@ -10,12 +10,14 @@ urlpatterns = [
     path('about/',views.serve_about),
     path('create/',views.serve_create),
 
-    path('/a/login',views.login),
-    path('/a/register',views.register),
-    path('/a/logout',views.logout),
-    path('/a/create',views.create),
+    path('a/login',views.login),
+    path('a/register',views.register),
+    path('a/logout',views.logout),
+    path('a/create',views.create),
     
-    path('/<int:id>/edit/',views.edit),
-    path('/<int:id>/delete/',views.delete),
+    path('<int:id>/edit/',views.edit),
+    path('<int:id>/delete/',views.delete),
+
+
 
 ]

@@ -141,6 +141,7 @@ body {
 }
 
 .tag {
+	text-decoration: none;
 	background-color: #f0f1c5;
 	border: 2px solid black;
 	border-radius: 15px;
@@ -149,6 +150,9 @@ body {
 	text-align: center;
 	cursor: pointer;
 	box-shadow: 1px 2px 3px #777;
+	&:hover {
+		background-color: #e6e1b8;
+	}
 }
 
 .taglist {
@@ -227,6 +231,8 @@ input {
 }
 
 .submitbutton {
+	text-decoration: none;
+	color: black;
 	padding: 10px;
 	background-color: #f0f1c5;
 	border: 2px solid black;
@@ -234,7 +240,7 @@ input {
 	font-size: 16px;
 	border-radius: 10px;
 
-	:hover {
+	&:hover {
 		background-color: #e6e1b8;
 	}
 }

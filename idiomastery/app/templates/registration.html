@@ -15,12 +15,11 @@
     <div class="header">
       <div class="logo">IDIOMASTERY</div>
       <nav class="nav-links">
-        <a href="#">About</a>
+        <a href="/about">About</a>
         <span class="separator">|</span>
         <a href="#">Quizzes</a>
       </nav>
       <div class="auth-link">
-        <a href="#">Sign up</a>
       </div>
   </header>
 
@@ -29,7 +28,8 @@
     <p>
       Or <a href="#">click here</a> to login if you already have an existing account.
     </p>
-    <form>
+    <form action="/a/register" method="POST">
+      {% csrf_token %}
       <input type="text" name="firstname" placeholder="First name" required />
       <input type="text" name="lastname" placeholder="Last name" required />
       <input type="email" name="email" placeholder="Email" required />

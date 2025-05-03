@@ -3,11 +3,14 @@ from django.shortcuts import redirect, render
 from app.models import *
 
 # Create your views here.
-def index(request):
-    return render(request, 'index.html', {})
+
 
 def serve_explore(request):
-    return render(request, 'explore.html', {})
+    context={
+        'idioms':Idiom.objects.all(),
+        'tags':Tag.objects.all()
+    }
+    return render(request, 'explore.html', context)
 
 def serve_login(request):
     return render(request, 'login.html', {})
@@ -42,7 +45,7 @@ def register(request):
     firstname=request.POST['firstname']
     lastname=request.POST['lastname']
     email=request.POST['email']
-    User.objects.create(first_name=firstname,last_name=lastname,email=email,password=pw_hash)
+    User.objects.create(firstname=firstname,lastname=lastname,email=email,password=pw_hash)
 
     request.session['userid']=User.objects.get(email=email).id
     return redirect("/")
@@ -62,8 +65,9 @@ def logout(request):
 
 
 def create(request):
-    errors=Idiom.objects.validateidiom(postdata=request.POST)
+    errors=Idiom.objects.idiom_validator(post=request.POST)
     if len(errors)>0:
+        print(errors)
         return redirect('/create',errors)
     # validate input
     phrase=request.POST['phrase']
@@ -71,16 +75,17 @@ def create(request):
     example=request.POST['example']
     origin=request.POST['origin']
     # we handle adding tags by separating them by commas in the input field
-    tags_string=request.POST['tags']
+    # tags_string=request.POST['tags']
 
     user=User.objects.get(id=request.session['userid'])
-    idiom=Idiom.objects.create(phrase=phrase, meaning=meaning, example=example, descriptoriginion=origin, user=user)
+    idiom=Idiom.objects.create(phrase=phrase, meaning=meaning, example=example, origin=origin, user=user)
 
-    tags_list = [tag.strip() for tag in tags_string.split(',')]
-    for tag_name in tags_list:
+    # tags_list = [tag.strip() for tag in tags_string.split(',')]
+    # for tag_name in tags_list:
 
-        idiom.tags.add(Tag.objects.get(name=tag_name))
+    #     idiom.tags.add(Tag.objects.get(name=tag_name))
 
+    print("IDIOM CREATED?",idiom)
     return redirect("/")
 
 def delete(request, id):

@@ -13,17 +13,16 @@
     <div class="header">
       <div class="logo">IDIOMASTERY</div>
       <nav class="nav-links">
-        <a href="#">About</a>
+        <a href="/about/">About</a>
         <span class="separator">|</span>
         <a href="#">Quizzes</a>
       </nav>
       <div class="auth-link">
-        <a href="#">Sign up</a>
       </div>
   </header>
     <div class="form-container bodylimit">
       
-      <form>
+      <form action="/a/login" method="POST">
         <h1>Welcome Back</h1>
         <p>Welcome back! Please enter your details.</p>
           {% csrf_token %}
@@ -33,7 +32,7 @@
           <button class="submitbutton" type="submit">Sign in</button>
       </form>
 
-      <p class="signup-text">Don't have an account? <a href="#">Sign up for free</a></p>
+      <p class="signup-text">Don't have an account? <a href="/register/">Sign up for free</a></p>
     </div>
 </body>
 </html>
