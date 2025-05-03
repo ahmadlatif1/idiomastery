@@ -10,7 +10,7 @@ urlpatterns = [
     path('about/',views.serve_about),
     path('create/',views.serve_create),
 
-    path('profile',views.get_profile),
+    path('profile/',views.get_profile),
 
     path('a/login',views.login),
     path('a/register',views.register),

@@ -55,14 +55,14 @@ class Idiom(models.Model):
     meaning=models.TextField()
     origin=models.TextField()
     example=models.CharField(max_length=255)
-    score=models.IntegerField
+    score=models.IntegerField()
     user= models.ForeignKey(User, related_name="idioms", on_delete = models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True) 
     updated_at=models.DateTimeField(auto_now=True)
     objects=IdiomManager()
 
 class Translation(models.Model):
-    score=models.IntegerField
+    score=models.IntegerField()
     idiom=models.ForeignKey(Idiom, related_name="translations", on_delete = models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True) 
     updated_at=models.DateTimeField(auto_now=True)

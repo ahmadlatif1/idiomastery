@@ -39,7 +39,8 @@ def serve_details(request,id):
 
     context={
         'user':user,
-        'idiom':Idiom.objects.get(id=id)
+        'idiom':Idiom.objects.get(id=id),
+        
     }
     return render(request, 'details.html',context)
 
