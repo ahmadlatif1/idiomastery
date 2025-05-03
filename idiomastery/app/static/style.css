@@ -11,351 +11,361 @@ auxiliary second (background for login): lighter eggshell #FFFDF6
 
 */
 
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Balsamiq Sans";
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Balsamiq Sans";
 }
 
 body {
-  display: flex;
-  flex-flow: column;  
-  align-items: center;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
 }
 
-.registerpage,.loginpage{
-  background-color: #FFFDF6 ;
+.registerpage,
+.loginpage {
+	background-color: #FFFDF6;
 }
 
-.aboutpage,.createpage,.explorepage,.profilepage{
-  background-color: #FAF6E9 ;
-}
-.card{
-  border: 2px solid black;
-  border-radius: 10px;
-  background-color: white;
-}
-.bodylimit{
-  width: 100%;
-  max-width: 1200px; /* make sure this is same as the nav bar limit */
-
+.aboutpage,
+.createpage,
+.explorepage,
+.profilepage {
+	background-color: #FAF6E9;
 }
 
-.explorebody{
-  display: flex;
-  padding: 80px 0;
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-  gap: 30px;
+.card {
+	border: 2px solid black;
+	border-radius: 10px;
+	background-color: white;
 }
 
-.widesection{
-  width: 75%;
-
-  display: flex;
-  flex-flow: column;
-  justify-content: stretch;
-  align-items: center;
-  gap: 10px;
-
-  .card{
-    width: 100%;
-  }
-
-}
-.sidesection{
-  width: 25%;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  gap: 30px;
-
-  .card{
-    width: 100%;
-  }
-}
-
-
-.add-idiom-card{
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px 20px;
-
-  font-size: 1.8em;
-  gap: 20px;
-  height: 200px;
+.bodylimit {
+	width: 100%;
+	max-width: 1200px;
+	/* make sure this is same as the nav bar limit */
 
 }
 
+.explorebody,
+.aboutbody,
+.createbody,
+.profilebody {
+	display: flex;
+	padding: 80px 0;
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+	gap: 30px;
+}
 
+.widesection {
+	width: 75%;
 
-.idiomcard{
-  display: flex;
-  flex-flow: column;
+	display: flex;
+	flex-flow: column;
+	justify-content: stretch;
+	align-items: center;
+	gap: 10px;
 
-  padding: 20px;
-  min-height: 200px;
-  justify-content: space-between;
-  
-
-  .idiomhead{
-
-    display: flex;
-    justify-content: space-between;
-
-    .idiom-phrase{
-      font-size: 2.2em;
-      font-weight: 600;
-    }
-  }
-
-  .idiombody{
-    font-size: 1.4em;
-  }
-  .idiomcardbottom{
-    display: flex;
-    justify-content: space-between;
-    span{
-      font-size: 1.2em;
-    }
-  }
+	.card {
+		width: 100%;
+	}
 
 }
-.tag{
-  background-color: #f0f1c5;
-  border: 2px solid black;
-  border-radius: 15px;
-  height: 30px;
-  padding: 4px 15px;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: 1px 2px 3px #777;
-}
-.taglist{
-  display: flex;
-  flex-flow: row wrap;
 
-}
-.populartags{
-  width: 100%;
-  text-align: center;
-  display: flex;
-  flex-flow: column;
-  gap: 10px;
-  min-height: 100px;
-  padding: 0px 10px;
+.sidesection {
+	width: 25%;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	gap: 30px;
+
+	.card {
+		width: 100%;
+	}
 }
 
 
-  
-header{
-  width: 100%;
-  background-color: #A0C878; 
+.add-idiom-card {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 20px 20px;
 
-  display: flex;
-  justify-content: center;
+	font-size: 1.8em;
+	gap: 20px;
+	height: 200px;
 
-
-  
 }
+
+
+
+.idiomcard {
+	display: flex;
+	flex-flow: column;
+
+	padding: 20px;
+	min-height: 200px;
+	justify-content: space-between;
+
+
+	.idiomhead {
+
+		display: flex;
+		justify-content: space-between;
+
+		.idiom-phrase {
+			font-size: 2.2em;
+			font-weight: 600;
+		}
+	}
+
+	.idiombody {
+		font-size: 1.4em;
+	}
+
+	.idiomcardbottom {
+		display: flex;
+		justify-content: space-between;
+
+		span {
+			font-size: 1.2em;
+		}
+	}
+
+}
+
+.tag {
+	background-color: #f0f1c5;
+	border: 2px solid black;
+	border-radius: 15px;
+	height: 30px;
+	padding: 4px 15px;
+	text-align: center;
+	cursor: pointer;
+	box-shadow: 1px 2px 3px #777;
+}
+
+.taglist {
+	display: flex;
+	flex-flow: row wrap;
+
+}
+
+.populartags {
+	width: 100%;
+	text-align: center;
+	display: flex;
+	flex-flow: column;
+	gap: 10px;
+	min-height: 100px;
+	padding: 0px 10px;
+}
+
+
+
+header {
+	width: 100%;
+	background-color: #A0C878;
+
+	display: flex;
+	justify-content: center;
+
+
+
+}
+
 .header {
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  justify-content:space-between;
-  align-items: center;
-  padding: 10px;
+	width: 100%;
+	max-width: 1200px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
 }
-  
-.logo {
-    font-weight: 800;
-    font-size: 2em;
-    color: #333;
-  }
-  
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  
-  a{
-    text-decoration: none;
-    color: #0645AD; 
-    font-weight: normal;
-  }
-  .separator{
-    color: #333;
 
-  }
+.logo {
+	font-weight: 800;
+	font-size: 2em;
+	color: #333;
+}
+
+.nav-links {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+
+	a {
+		text-decoration: none;
+		color: #0645AD;
+		font-weight: normal;
+	}
+
+	.separator {
+		color: #333;
+
+	}
 }
 
 
 .auth-link a {
-  text-decoration: none;
-  color: #0645AD;
+	text-decoration: none;
+	color: #0645AD;
 }
 
 
 input {
-  padding: 10px;
-  border: 1px solid #999;
-  border-radius: 2px;
-  font-size: 14px;
+	padding: 10px;
+	border: 1px solid #999;
+	border-radius: 2px;
+	font-size: 14px;
 }
 
 .submitbutton {
-  padding: 10px;
-  background-color: #f0f1c5;
-  border: 2px solid black;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 10px;
+	padding: 10px;
+	background-color: #f0f1c5;
+	border: 2px solid black;
+	cursor: pointer;
+	font-size: 16px;
+	border-radius: 10px;
 
-  :hover{
-    background-color: #e6e1b8;
-  }
+	:hover {
+		background-color: #e6e1b8;
+	}
 }
 
 
 .signup-text {
-  margin-top: 20px;
-  font-size: 12px;
+	margin-top: 20px;
+	font-size: 12px;
 
-  a{
-    text-decoration: underline;
-    color: #007bff;
-    font-size: 12px;
-  }
+	a {
+		text-decoration: underline;
+		color: #007bff;
+		font-size: 12px;
+	}
 }
 
 
 
 .form-container {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	padding: 40px 20px;
 
-  gap: 10px;
-  max-width: 400px;
+	gap: 10px;
+	max-width: 400px;
 
-  h1{
-    font-size: 2rem;
-    font-weight: bold;
-  }
+	h1 {
+		font-size: 2rem;
+		font-weight: bold;
+	}
 
-  p{
-    font-size: 0.95rem;
+	p {
+		font-size: 0.95rem;
 
-  }
+	}
 
-  form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-}
-
-textarea{
-  padding: 10px;
-  border: 1px solid #999;
-  border-radius: 2px;
-  font-size: 14px;
-  resize: none;
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+	}
 }
 
 
-input {
-  padding: 12px;
-  width: 300px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
+.createbox {
 
-.createbox{
-  margin-top: 50px;
-  width: 800px;
-  height: 700px;
-  border: 2px solid black;
-  border-radius: 5px;
-  background-color: #FFFDF6;
-  display: flex;
-  flex-flow: column;
-  padding: 40px 20px;
+	background-color: white;
+	display: flex;
+	flex-flow: column;
+	padding: 40px 60px;
 
-  form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  
-  }
-  input {
-    padding: 12px;
-    width: 700px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 15px;
 
-  #idiom{
-    border: 1px solid #a9a9a9;
-  }
-  #meaning{
-    width: 700px;
-    height: 100px;
-  }
-  #example{
-    width: 700px;
-    height: 100px;
-  }
+		textarea {
+			padding: 10px;
+			border: 1px solid #999;
+			border-radius: 2px;
+			font-size: 14px;
+			resize: none;
+		}
 
-  #origin{
-    width: 700px;
-    height: 300px;
-  }
+
+		input {
+			padding: 12px;
+			font-size: 1rem;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+		}
+
+	}
+
+	input {
+		padding: 12px;
+		font-size: 1rem;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+	}
+
+	#idiom {
+		height: 50;
+		border: 1px solid #a9a9a9;
+	}
+
+	#meaning {
+		height: 100px;
+	}
+
+	#example {
+		height: 100px;
+	}
+
+	#origin {
+		height: 300px;
+	}
+
+
 }
 
 .button-container {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  padding: 10px 25px ;
-  
-  
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+
+
 }
 
 
-.guidelines{
-  margin-top: 50px;
-  width: 350px;
-  height: 1000px;
-  border: 2px solid black;
-  border-radius: 5px;
-  background-color: #FFFDF6;
-  margin-bottom: 50px;
+.guidelines {
+	background-color: white;
+	padding: 20px 10px;
+	display: flex;
+	flex-flow: column;
 
-  h2{
-    text-align: center;
-    padding: 40px 20px;
-  }
-  h4{
-    padding: 1px 20px;
-  }
-  ul{
-    padding: 20px;
-  }
-}
+	h2 {
+		text-align: center;
+	}
 
-.createbody{
-  display: flex;
-justify-content: space-between;
+	h4 {
+		margin-top: 10px;
+	}
+
+	li {
+		margin-top: 5px;
+		margin-left: 20px;
+		line-height: 1;
+	}
 }
