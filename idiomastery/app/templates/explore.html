@@ -11,15 +11,32 @@
 <body class="explorepage"> 
     <header>
         <div class="header">
-          <div class="logo">IDIOMASTERY</div>
-          <nav class="nav-links">
-            <a href="/about/">About</a>
-            <span class="separator">|</span>
-            <a href="#">Quizzes</a>
-          </nav>
-          <div class="auth-link">
-            <a href="/login/">Sign In</a>
-          </div>
+            <div class="header-start">
+                <a class="logo" href="/">IDIOMASTERY</a>
+                <nav class="nav-links">
+                <a href="/about/">About</a>
+                <span class="separator">|</span>
+                <a href="#">Quizzes</a>
+                </nav>
+            </div>
+            
+            <div class="auth-link">
+                {% if user == 'none' %}
+                <a href="/login/">Sign In</a>
+                {% else %}
+                <a href="/profile/{{user.id}}">{{user.firstname}} {{user.lastname}}</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="search-bar-container">
+            <div class="search-bar">
+                <form action="">
+                    {% csrf_token %}
+                    <input class="searchbox" type="text" name="search" placeholder="search anything">
+                    <input class="searchbutton" type="submit" value="search">
+                </form>
+            </div>
+        </div>
     </header>
     <div class="explorebody bodylimit" >
         <div class="widesection">
@@ -30,11 +47,14 @@
                     <img src="" alt="" class="likebtn">
                 </div>
                 <div class="idiombody">
-                    <span>{{idiom.meaning}}</span>
-                    <span>{{idiom.example}}</span>
+                    <span>Meaning: {{idiom.meaning}}</span>
+                    {% if idiom.example != '' %}
+                    <span>Example: {{idiom.example}}</span>
+
+                    {% endif %}
                 </div>
                 <div class="idiomcardbottom">
-                    <span><a href="/{{idiom.id}}">Read More</a></span>
+                    <span><a class="keepblue nodecoration" href="/{{idiom.id}}">Read More</a></span>
                     <div class="taglist">
                         <div class="tag">tag</div>
                         {% comment %} add first 2-3 tags {% endcomment %}

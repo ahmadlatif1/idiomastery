@@ -6,32 +6,52 @@ from app.models import *
 
 
 def serve_explore(request):
+    user='none'
+    if 'userid' in request.session:
+        user=User.objects.get(id=request.session['userid'])
+
     context={
+        'user':user,
         'idioms':Idiom.objects.all(),
         'tags':Tag.objects.all()
     }
     return render(request, 'explore.html', context)
 
 def serve_login(request):
+    
     return render(request, 'login.html', {})
 
 def serve_registration(request):
     return render(request, 'registration.html', {})
 
 def serve_profile(request,id):
-    context={}
-    context['user']=User.objects.get(id=id)
+    context={
+        'user':User.objects.get(id=id),
+        'idioms':Idiom.objects.filter(user=id),
+    }
     return render(request, 'profile.html',context)
 
 def serve_details(request,id):
-    context={}
-    context['idiom']=Idiom.objects.get(id=id)
+    
+    user='none'
+    if 'userid' in request.session:
+        user=User.objects.get(id=request.session['userid'])
+
+    context={
+        'user':user,
+        'idiom':Idiom.objects.get(id=id)
+    }
     return render(request, 'details.html',context)
 
 def serve_about(request):
-    return render(request, 'about.html', {})
+    user='none'
+    if 'userid' in request.session:
+        user=User.objects.get(id=request.session['userid'])
+
+    return render(request, 'about.html', {'user':user})
 
 def serve_create(request):
+
     return render(request, 'create.html', {})
 
 def get_profile(request):

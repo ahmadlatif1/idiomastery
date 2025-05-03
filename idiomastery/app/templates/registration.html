@@ -13,15 +13,25 @@
     
   <header>
     <div class="header">
-      <div class="logo">IDIOMASTERY</div>
-      <nav class="nav-links">
-        <a href="/about">About</a>
-        <span class="separator">|</span>
-        <a href="#">Quizzes</a>
-      </nav>
-      <div class="auth-link">
-      </div>
-  </header>
+        <div class="header-start">
+            <a class="logo" href="/">IDIOMASTERY</a>
+            <nav class="nav-links">
+            <a href="/about/">About</a>
+            <span class="separator">|</span>
+            <a href="#">Quizzes</a>
+            </nav>
+        </div>
+        
+        <div class="auth-link">
+            {% if user == 'none' %}
+            <a href="/login/">Sign In</a>
+            {% else %}
+            <a href="/profile/{{user.id}}">{{user.firstname}} {{user.lastname}}</a>
+            {% endif %}
+        </div>
+    </div>
+    
+</header>
 
   <div class="form-container">
     <h1>Register your account</h1>
