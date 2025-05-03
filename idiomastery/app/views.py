@@ -34,6 +34,10 @@ def serve_about(request):
 def serve_create(request):
     return render(request, 'create.html', {})
 
+def get_profile(request):
+    user=request.session['userid']
+    return redirect(f'/profile/{user}')
+
 def register(request):
     # NOTE TO MAKE SURE TO ADD CONFIRM PASSWORD TO VALIDATION
     errors=User.objects.user_validator(post=request.POST)
