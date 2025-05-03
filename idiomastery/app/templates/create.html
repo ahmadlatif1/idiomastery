@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Idiomastery</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body class="createpage">
+    <header>
+        <div class="header">
+          <div class="logo">IDIOMASTERY</div>
+          <nav class="nav-links">
+            <a href="#">About</a>
+            <span class="separator">|</span>
+            <a href="#">Quizzes</a>
+          </nav>
+          <div class="auth-link">
+            <a href="#">Sign up</a>
+          </div>
+    </header>
+
+    <div class="createbody bodylimit">
+		<div class="widesection">
+			<div class="createbox card">
+				<form action="/a/create" method="POST">
+					<input type="text" name="idiom" placeholder="The Idiom says what?" id="idiom">
+					<textarea name="meaning" id="meaning" placeholder="what does the idiom mean?"></textarea>
+					<textarea name="example" id="example" placeholder="Example(optional)"></textarea>
+					<textarea name="origin" id="origin" placeholder="Origin/history (optional)"></textarea>
+					<div class="button-container">
+						<button class="submitbutton">Publish</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="sidesection">
+			<div class="guidelines card">
+				<h2>Submission Guidelines</h2>
+				<h4>1. Idiom Format</h4>
+				<ul>
+					<li>Use proper spelling, grammar, and punctuation.</li>
+					<li>Avoid slang, profanity, or phrases with offensive connotations.</li>
+				</ul>
+			
+				<h4>2. Meaning</h4>
+				<ul>
+					<li>Provide a clear and concise explanation of what the idiom means.</li>
+				</ul>
+			
+				<h4>3. Origin</h4>
+				<ul>
+					<li>If known, briefly describe the origin (historical, cultural, or linguistic).</li>
+					<li>Cite a source if possible.</li>
+				</ul>
+			
+				<h4>4. Equivalent Idioms</h4>
+				<ul>
+					<li>Add idioms from other languages or regions that express a similar idea.</li>
+					<li>Clearly label the language or region if adding non-English equivalents.</li>
+				</ul>
+			
+				<h4>5. Example Usage</h4>
+				<ul>
+					<li>Include a sentence showing how the idiom is used naturally in context.</li>
+				</ul>
+			
+				<h4>6. Translations</h4>
+				<ul>
+					<li>Add translations only if you are confident in their accuracy.</li>
+					<li>Choose idiomatic rather than literal translations where possible.</li>
+				</ul>
+			
+				<h4>7. Avoid Duplicates</h4>
+				<ul>
+					<li>Before submitting, search the platform to ensure the idiom doesn’t already exist.</li>
+					<li>If it does, you can add a translation or equivalent instead.</li>
+				</ul>
+			</div>
+		
+		</div>
+    </div>
+</body>
+</html>
