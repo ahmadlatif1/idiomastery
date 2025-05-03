@@ -9,6 +9,41 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body class="profilepage">
-    <h1>hello world</h1>
+    <div class="explorebody bodylimit" >
+        <div class="widesection">
+            <h1>recent submissions</h1>
+            <div class="idiomcard card">
+                <div class="idiomhead">
+                    <span class="idiom-phrase">template iconic text here</span>
+                    <img src="" alt="" class="likebtn">
+                </div>
+                <div class="idiombody">
+                    <span>a profound meaning</span>
+                    <span>and an example!</span>
+                </div>
+                <div class="idiomcardbottom">
+                    <span><a href="/">Read More</a></span>
+                    <div class="taglist">
+                        {% comment %} add first 2-3 tags {% endcomment %}
+                        <div class="tag">tag text</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="sidesection">
+            <h1>profile</h1>
+            <div class="card add-idiom-card">
+                <span>do you have an idiom?</span>
+                <button class="submitbutton" href="/create"> Add it Here!</button>
+            </div>
+            <div class="populartags">
+                <h1>Popular tags</h1>
+                <div class="taglist">
+                    <div class="tag">tag text</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
