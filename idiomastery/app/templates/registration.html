@@ -13,23 +13,33 @@
     
   <header>
     <div class="header">
-      <div class="logo">IDIOMASTERY</div>
-      <nav class="nav-links">
-        <a href="#">About</a>
-        <span class="separator">|</span>
-        <a href="#">Quizzes</a>
-      </nav>
-      <div class="auth-link">
-        <a href="#">Sign up</a>
-      </div>
-  </header>
+        <div class="header-start">
+            <a class="logo" href="/">IDIOMASTERY</a>
+            <nav class="nav-links">
+            <a href="/about/">About</a>
+            <span class="separator">|</span>
+            <a href="#">Quizzes</a>
+            </nav>
+        </div>
+        
+        <div class="auth-link">
+            {% if user == 'none' %}
+            <a href="/login/">Sign In</a>
+            {% else %}
+            <a href="/profile/{{user.id}}">{{user.firstname}} {{user.lastname}}</a>
+            {% endif %}
+        </div>
+    </div>
+    
+</header>
 
   <div class="form-container">
     <h1>Register your account</h1>
     <p>
       Or <a href="#">click here</a> to login if you already have an existing account.
     </p>
-    <form>
+    <form action="/a/register" method="POST">
+      {% csrf_token %}
       <input type="text" name="firstname" placeholder="First name" required />
       <input type="text" name="lastname" placeholder="Last name" required />
       <input type="email" name="email" placeholder="Email" required />

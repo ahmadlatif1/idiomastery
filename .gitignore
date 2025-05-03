@@ -172,3 +172,4 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+/idiomastery/app/migrations/0001_initial.py

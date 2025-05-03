@@ -126,6 +126,8 @@ body {
 	}
 
 	.idiombody {
+		display: flex;
+		flex-flow: column;
 		font-size: 1.4em;
 	}
 
@@ -141,6 +143,7 @@ body {
 }
 
 .tag {
+	text-decoration: none;
 	background-color: #f0f1c5;
 	border: 2px solid black;
 	border-radius: 15px;
@@ -149,6 +152,9 @@ body {
 	text-align: center;
 	cursor: pointer;
 	box-shadow: 1px 2px 3px #777;
+	&:hover {
+		background-color: #e6e1b8;
+	}
 }
 
 .taglist {
@@ -174,7 +180,9 @@ header {
 	background-color: #A0C878;
 
 	display: flex;
+	flex-flow: column;
 	justify-content: center;
+	align-items: center;
 
 
 
@@ -190,6 +198,7 @@ header {
 }
 
 .logo {
+	text-decoration: none;
 	font-weight: 800;
 	font-size: 2em;
 	color: #333;
@@ -227,6 +236,8 @@ input {
 }
 
 .submitbutton {
+	text-decoration: none;
+	color: black;
 	padding: 10px;
 	background-color: #f0f1c5;
 	border: 2px solid black;
@@ -234,7 +245,7 @@ input {
 	font-size: 16px;
 	border-radius: 10px;
 
-	:hover {
+	&:hover {
 		background-color: #e6e1b8;
 	}
 }
@@ -368,4 +379,79 @@ input {
 		margin-left: 20px;
 		line-height: 1;
 	}
+}
+
+.profilecard{
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	padding: 20px;
+	gap: 20px;
+	
+	.name{
+		font-size: 2em;
+		
+	}
+
+}
+
+.header-start{
+	display: flex;
+	gap: 40px;
+}
+
+.search-bar-container{
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	padding: 10px;
+	padding-top: 0;
+	margin-top: -5px;
+	max-width: 1200px;
+	width: 100%;
+
+	.search-bar{
+		width: 100%;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content:center;
+		
+		form{
+			width: 100%;
+			display: flex;
+			flex-flow: row;
+		}
+		.searchbox{
+			width: 100%;
+			display: flex;
+			flex-flow: row;
+			height: 40px;
+
+			background-color: white;
+			border:1px solid #ccc;
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;
+
+		}
+		.searchbutton{
+			padding: 5px 20px;
+			height: 40px;
+			background-color: white;
+			border:1px solid #ccc;
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+			cursor: pointer;
+			&&:hover{
+				background-color: #eee;
+			}
+		}
+	}
+}
+
+.nodecoration{
+	
+	text-decoration: none;
+}
+.keepblue{
+	color:#007bff;
 }
