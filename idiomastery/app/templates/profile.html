@@ -30,6 +30,9 @@
                 {% else %}
                 <i class="bi bi-person-fill" style="font-size:20px;"></i>
                 <a href="/profile/{{user.id}}">{{user.firstname}} {{user.lastname}}</a>
+                {% if user.id == sessionid %}
+				<a href="/a/logout">log out</a>
+				{% endif %}
                 {% endif %}
             </div>
         </div>

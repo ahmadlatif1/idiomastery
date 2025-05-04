@@ -28,6 +28,9 @@
                 {% else %}
                 <i class="bi bi-person-fill" style="font-size:20px;"></i>
                 <a href="/profile/{{user.id}}">{{user.firstname}} {{user.lastname}}</a>
+                {% if user.id == sessionid %}
+				<a href="/a/logout">log out</a>
+				{% endif %}
                 {% endif %}
             </div>
         </div>
@@ -100,7 +103,9 @@
             <div class="sidecardcontainer">
                 <span>Equivalent Idioms</span>
                 <div class="sidecard card">
-
+                    {% for item in related %}
+                    <a href="item.id" class="nodecoration keepblue">{{}}</a>
+                    {% endfor %}
                 </div>
             </div>
         </div>

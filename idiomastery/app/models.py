@@ -61,7 +61,7 @@ class Idiom(models.Model):
     user= models.ForeignKey(User, related_name="idioms", on_delete = models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True) 
     updated_at=models.DateTimeField(auto_now=True)
-    related=models.IntegerField()
+    related=models.IntegerField(default=0)
     language=models.CharField(default="English")
     objects=IdiomManager()
 
@@ -77,3 +77,4 @@ class Tag(models.Model):
     idioms=models.ManyToManyField(Idiom, related_name="tags")
     created_at=models.DateTimeField(auto_now_add=True) 
     updated_at=models.DateTimeField(auto_now=True)
+
