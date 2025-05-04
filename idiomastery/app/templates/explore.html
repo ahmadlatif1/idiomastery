@@ -30,7 +30,7 @@
         </div>
         <div class="search-bar-container">
             <div class="search-bar">
-                <form action="">
+                <form action="/search/" method="GET">
                     {% csrf_token %}
                     <input class="searchbox" type="text" name="search" placeholder="search anything">
                     <input class="searchbutton" type="submit" value="search">
@@ -40,6 +40,38 @@
     </header>
     <div class="explorebody bodylimit" >
         <div class="widesection">
+
+            {% if results %}
+                <span>h</span>
+            {% endif %}
+            <div class="searchresults">
+
+            </div>
+            {% for idiom in results %}
+            <h2>result:</h2>
+            <div class="idiomcard card">
+                <div class="idiomhead">
+                    <span class="idiom-phrase">{{idiom.phrase}}</span>
+                    <img src="" alt="" class="likebtn">
+                </div>
+                <div class="idiombody">
+                    <span>Meaning: {{idiom.meaning}}</span>
+                    {% if idiom.example != '' %}
+                    <span>Example: {{idiom.example}}</span>
+
+                    {% endif %}
+                </div>
+                <div class="idiomcardbottom">
+                    <span><a class="keepblue nodecoration" href="/{{idiom.id}}">Read More</a></span>
+                    <span class="authorsubtitle">written by: <a class="nodecoration keepblue" href="/profile/{{idiom.user.id}}">{{idiom.user.firstname}} {{idiom.user.lastname}} </a> ({{idiom.created_at|date:'Y-m-d'}})</span>
+                    <div class="taglist">
+                        <div class="tag">tag</div>
+                        {% comment %} add first 2-3 tags {% endcomment %}
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
             {% for idiom in idioms %}
             <div class="idiomcard card">
                 <div class="idiomhead">

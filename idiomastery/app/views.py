@@ -138,3 +138,24 @@ def edit(request, id):
     idiom.save()
 
     return redirect("/")
+
+
+def search(request,query):
+    
+    query
+    words=query.split(' ')
+    idioms = Idiom.objects.none()
+    for word in words:
+        idioms |= Idiom.objects.filter(phrase__icontains=word) | Idiom.objects.filter(meaning__icontains=word)
+
+    user='none'
+    if 'userid' in request.session:
+        user=User.objects.get(id=request.session['userid'])
+
+    context={
+        'user':user,
+        'results':idioms,
+        'idioms':Idiom.objects.all(),
+    }
+    print("idioms: ",idioms[0].phrase)
+    return render(request,'explore.html',context)
