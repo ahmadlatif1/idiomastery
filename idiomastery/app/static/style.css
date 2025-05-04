@@ -22,6 +22,7 @@ body {
 	display: flex;
 	flex-flow: column;
 	align-items: center;
+	min-height: 100%;
 }
 
 .registerpage,
@@ -47,6 +48,7 @@ body {
 	width: 100%;
 	max-width: 1000px;
 	/* make sure this is same as the nav bar limit */
+	
 
 }
 
@@ -560,4 +562,20 @@ input {
   
 .error{
 	color: red;
+}
+
+footer{
+	display: flex;
+	justify-content: space-around;
+	justify-self: flex-end;
+	align-items: center;
+	text-align: center;
+	background-color: #f6eac2;
+	height: 60px;
+	width: 100%;
+	margin-top: 100px;
+	div{
+		display: flex;
+
+	}
 }
