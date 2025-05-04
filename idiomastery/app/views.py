@@ -37,9 +37,13 @@ def serve_details(request,id):
     if 'userid' in request.session:
         user=User.objects.get(id=request.session['userid'])
 
+    idiom=Idiom.objects.get(id=id)
+
     context={
         'user':user,
-        'idiom':Idiom.objects.get(id=id),
+        'idiom':idiom,
+        'translations':idiom.translations,
+        'related':Idiom.objects.filter()
         
     }
     return render(request, 'details.html',context)
@@ -147,7 +151,7 @@ def edit(request, id):
 def search(request):
     
     query=''
-    if request.method == "GET":
+    if request.method == "  GET":
         query=request.GET.get('search')
     words=query.split(' ')
     idioms = Idiom.objects.none()
