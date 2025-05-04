@@ -22,8 +22,10 @@
             
             <div class="auth-link">
                 {% if user == 'none' %}
+				<i class="bi bi-person-fill" style="font-size:20px;"></i>
                 <a href="/login/">Sign In</a>
                 {% else %}
+				<i class="bi bi-person-fill" style="font-size:20px;"></i>
                 <a href="/profile/{{user.id}}">{{user.firstname}} {{user.lastname}}</a>
                 {% endif %}
             </div>
