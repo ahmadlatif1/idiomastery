@@ -61,10 +61,13 @@ class Idiom(models.Model):
     user= models.ForeignKey(User, related_name="idioms", on_delete = models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True) 
     updated_at=models.DateTimeField(auto_now=True)
+    related=models.IntegerField()
+    language=models.CharField(default="English")
     objects=IdiomManager()
 
 class Translation(models.Model):
     score=models.IntegerField()
+    language=models.CharField(default="English")
     idiom=models.ForeignKey(Idiom, related_name="translations", on_delete = models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True) 
     updated_at=models.DateTimeField(auto_now=True)
