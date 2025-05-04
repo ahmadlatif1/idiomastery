@@ -13,6 +13,8 @@ class UserManager(models.Manager):
             errors['email'] = "Invalid email address!"
         if len(post['password'])<8:
             errors['password'] = "Password should be at least 8 characters"
+        if post['password'] is not post['confirmpassword']:
+            errors['confirmpassword']="passwords don't match"
 
         return errors
     
@@ -55,7 +57,7 @@ class Idiom(models.Model):
     meaning=models.TextField()
     origin=models.TextField()
     example=models.CharField(max_length=255)
-    score=models.IntegerField()
+    score=models.IntegerField(default=0)
     user= models.ForeignKey(User, related_name="idioms", on_delete = models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True) 
     updated_at=models.DateTimeField(auto_now=True)
