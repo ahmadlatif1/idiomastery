@@ -28,7 +28,13 @@ def serve_profile(request,id):
     context={
         'user':User.objects.get(id=id),
         'idioms':Idiom.objects.filter(user=id),
+        'sessionid':''
     }
+    if 'userid' in request.session:
+        context['sessionid']=request.session['userid']
+
+    print('context')
+    
     return render(request, 'profile.html',context)
 
 def serve_details(request,id):
@@ -43,9 +49,10 @@ def serve_details(request,id):
         'user':user,
         'idiom':idiom,
         'translations':idiom.translations,
-        'related':Idiom.objects.filter()
+        'related':Idiom.objects.filter(related=idiom.related)
         
     }
+    print(context['related'])
     return render(request, 'details.html',context)
 
 def serve_about(request):
@@ -119,16 +126,18 @@ def create(request):
     meaning=request.POST['meaning']
     example=request.POST['example']
     origin=request.POST['origin']
+    
     # we handle adding tags by separating them by commas in the input field
     # tags_string=request.POST['tags']
 
     user=User.objects.get(id=request.session['userid'])
     idiom=Idiom.objects.create(phrase=phrase, meaning=meaning, example=example, origin=origin, user=user)
-
+    idiom.related=idiom.id
     # tags_list = [tag.strip() for tag in tags_string.split(',')]
     # for tag_name in tags_list:
 
     #     idiom.tags.add(Tag.objects.get(name=tag_name))
+
 
     print("IDIOM CREATED?",idiom)
     return redirect("/")
