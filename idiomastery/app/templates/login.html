@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">    <title>Idiomastery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">    <title>Idiomastery</title>
 	{% load static %}
 	<link rel="stylesheet" href="{% static 'style.css' %}">
 	<title>Log In</title>
@@ -35,27 +36,46 @@
         </div>
         
     </header>
-	<div class="form-container bodylimit">
+	<div class="container my-5" style='max-width: 1000px;'>
+		<div class="card shadow rounded">
+		  <div class="row g-0 align-items-center">
+			
+			<!-- Image section -->
+			<div class="col-md-6 ">
+			  <img src="{% static 'img/logo.png' %}" alt="logo" class="img-fluid" style="max-height: 450px;">
+			</div>
 	  
-	  <form action="/a/login" method="POST">
-		<h1>Welcome Back</h1>
-		<p>Welcome back! Please enter your details.</p>
-		{% csrf_token %}
-		<input type="email" id="email" name="email" placeholder="email">
-		{% if errors.email %}
-    	<span class="error">{{errors.email}}</span>
-      	{% endif %}
-		
-		<input type="password" id="password" name="password" placeholder="password">
-		{% if errors.password %}
-      	<span class="error">{{errors.password}}</span>
-      	{% endif %}
-
-		<button class="submitbutton" type="submit">Sign in</button>
-	  </form>
-
-	  <p class="signup-text">Don't have an account? <a href="/register/">Sign up for free</a></p>
-	</div>
+			<!-- Form section -->
+			<div class="col-md-6 p-4">
+			  <h1 class="mb-3 text-center">Welcome Back</h1>
+			  <p class="text-center text-muted mb-4">Welcome back! Please enter your details.</p>
+	  
+			  <form action="/a/login" method="POST">
+				{% csrf_token %}
+	  
+				<div class="mb-3">
+				  <input type="email" id="email" name="email" class="form-control" placeholder="email">
+				  {% if errors.email %}
+					<span class="error">{{errors.email}}</span>
+				  {% endif %}
+				</div>
+	  
+				<div class="mb-3">
+				  <input type="password" id="password" name="password" class="form-control" placeholder="password">
+				  {% if errors.password %}
+					<span class="error">{{errors.password}}</span>
+				  {% endif %}
+				</div>
+	  
+				<button class="btn btn-success w-100" type="submit">Sign in</button>
+			  </form>
+	  
+			  <p class="signup-text text-center mt-3">Don't have an account? <a href="/register/">Sign up for free</a></p>
+			</div>
+	  
+		  </div>
+		</div>
+	  </div>
 	<footer>
 		<div>
 			<p>Social Media:</p>
