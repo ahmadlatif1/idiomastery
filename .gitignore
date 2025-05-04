@@ -174,3 +174,4 @@ cython_debug/
 .pypirc
 /idiomastery/app/migrations/0001_initial.py
 idiomastery/app/migrations/0002_idiom_score_translation_score.py
+idiomastery/app/migrations/0003_alter_translation_language.py
