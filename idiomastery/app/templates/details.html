@@ -79,8 +79,37 @@
 
             <div class="translations-container card">
                 <span class="translationtitle">Translations</span>
-                <div class="translationcard card">
-                    <span>test text translation</span>
+                    
+                    {% if translations != 'none' %}
+                    <div class="translationcard card">
+
+                    {% for item in translations %}
+                    <div class="translationitem">
+
+                        <div>{{item.language}}</div>
+                        <div>
+                            <span>{{item.text}}</span>
+                            <span>like</span> 
+
+                        </div>
+                    </div>
+                    {% endfor %}
+                    </div>
+                    {% endif %}
+
+                <div class="addtranslation">
+                    <form action="/{{idiom.id}}/addtranslation" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="text" >
+                        {% comment %} add an option dropdown with languages {% endcomment %}
+                        <select name="language" id="language">
+                            <option value="english">English</option>
+                            <option value="french">French</option>
+                            <option value="german">German</option>
+                            <option value="spanish">Spanish</option>
+                        </select>
+                        <input type="submit" value="Add Translation">
+                    </form>
                 </div>
             </div>
             

@@ -17,6 +17,7 @@ urlpatterns = [
     path('a/logout',views.logout),
     path('a/create',views.create),
     path('search/',views.search, name='search'),
+    path("<int:id>/addtranslation",views.addtranslation),
     
     path('<int:id>/edit/',views.edit),
     path('<int:id>/delete/',views.delete),
