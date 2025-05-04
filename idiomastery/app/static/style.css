@@ -561,3 +561,16 @@ input {
 .error{
 	color: red;
 }
+
+.carousel-inner img {
+	width: 1000px;
+	height: 500px;
+	object-fit: cover;
+	margin: 10px 0px;
+  }
+
+  .carousel-container{
+	width: 1000px;
+	height: 500px;
+	overflow: hidden;
+  }
