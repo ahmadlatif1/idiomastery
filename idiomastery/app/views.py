@@ -66,6 +66,7 @@ def register(request):
     # NOTE TO MAKE SURE TO ADD CONFIRM PASSWORD TO VALIDATION
     errors=User.objects.user_validator(post=request.POST)
     if len(errors)>0:
+        print(errors)
         return redirect('/',errors)
     # validate input
     password= request.POST['password']
