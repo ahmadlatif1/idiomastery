@@ -81,26 +81,27 @@
                 <span class="translationtitle">Translations</span>
                     
                     {% if translations != 'none' %}
-                    <div class="translationcard card">
+                    <div class="translationcard">
 
-                    {% for item in translations %}
-                    <div class="translationitem">
+                        {% for item in translations %}
+                        <div class="translationitem card">
 
-                        <div>{{item.language}}</div>
-                        <div>
-                            <span>{{item.text}}</span>
-                            <span>like</span> 
+                            <div class="languagelabel">{{item.language}}</div>
+                            <div class="translationinner">
+                                <span>{{item.text}}</span>
+                                <span>like</span> 
 
+                            </div>
                         </div>
-                    </div>
-                    {% endfor %}
-                    </div>
+                        {% endfor %}
+                        </div>
                     {% endif %}
 
-                <div class="addtranslation">
-                    <form action="/{{idiom.id}}/addtranslation" method="POST">
+                <div class="addtranslation"> 
+                    <span>Add a Translation</span>
+                    <form class="card" action="/{{idiom.id}}/addtranslation" method="POST">
                         {% csrf_token %}
-                        <input type="text" name="text" >
+                        <input class="comment" type="text" name="text" >
                         {% comment %} add an option dropdown with languages {% endcomment %}
                         <select name="language" id="language">
                             <option value="english">English</option>
@@ -108,7 +109,7 @@
                             <option value="german">German</option>
                             <option value="spanish">Spanish</option>
                         </select>
-                        <input type="submit" value="Add Translation">
+                        <input class="translationsubmit" type="submit" value="Add Translation">
                     </form>
                 </div>
             </div>

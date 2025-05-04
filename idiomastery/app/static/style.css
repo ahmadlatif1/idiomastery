@@ -493,10 +493,81 @@ input {
 	flex-flow: column;
 }
 .translationcard{
+	background-color: #eee;
+	border-radius: 10px;
+
 	display: flex;
-	flex-flow: row;
+	flex-flow: column;
+	gap: 10px;
 	padding: 20px;
 	font-size: 0.6em;
+}
+.translationitem{
+	display: flex;
+	flex-flow: column;
+	padding: 0 20px 10px 20px;
+
+}
+
+.translationinner{
+	display: flex;
+	justify-content: space-between;
+	
+}
+.addtranslation{
+
+	
+	form{
+		display: flex;
+		flex-flow: row;
+
+		padding: 5px;
+		align-items: center;
+	
+
+
+
+		input{
+			border: none;
+			background-color: white;
+			height: 30px;
+		}
+		.comment{
+			
+			flex-grow: 1;
+			margin-right: 5px;
+		}
+		select{
+			margin-top: 0;
+			border: none;
+			background-color: white;
+		}
+		.translationsubmit{
+
+			height: 30px;
+			padding: 0 5px;
+			margin: 0;
+			text-align: center;
+			cursor: pointer;
+
+
+			&&:hover{
+				background-color: #ccc	;
+			}
+		}
+	}
+}
+.languagelabel{
+	border: 2px solid #666;
+	color: #666;
+	font-weight: 600;
+	background-color: #ccc;
+	border-radius: 10px;	
+	padding: 3px 5px;
+	font-size: 0.7em;
+	width: fit-content;
+	align-self: flex-end;
+	margin-top: -15px;
 }
 
 .aboutcontent{
