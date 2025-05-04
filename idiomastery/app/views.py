@@ -85,13 +85,19 @@ def register(request):
 def login(request):
     print("post request",request.POST)
     user=User.objects.filter(email=request.POST['email'])
+    errors={}
     if user:
         logged_user=user[0]
         print('user:',user)
         if bcrypt.checkpw(request.POST['password'].encode('utf-8'), logged_user.password.encode('utf-8')):
             print("logged user",logged_user)
             request.session['userid']=logged_user.id
-            
+        else:
+            errors['password']='Check password'
+    else: errors['email']="Invalid email address"
+    if len(errors)>0:
+        print(errors)
+        return render(request, 'login.html',{"errors": errors})
     return redirect('/')
 
 def logout(request):
@@ -103,7 +109,7 @@ def create(request):
     errors=Idiom.objects.idiom_validator(post=request.POST)
     if len(errors)>0:
         print(errors)
-        return redirect('/create',errors)
+        return render( request, 'create.html',{"errors": errors})
     # validate input
     phrase=request.POST['phrase']
     meaning=request.POST['meaning']
