@@ -496,3 +496,15 @@ input {
 	padding: 20px;
 	font-size: 0.6em;
 }
+
+.aboutcontent{
+	padding: 40px 60px;
+
+	p{
+		padding: 10px;
+	}
+}
+
+.siteinfo{
+	padding: 40px 30px;
+}
