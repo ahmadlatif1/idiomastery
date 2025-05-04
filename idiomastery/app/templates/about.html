@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <title>Idiomastery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">    <title>Idiomastery</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
@@ -22,8 +21,10 @@
             
             <div class="auth-link">
                 {% if user == 'none' %}
+                <i class="bi bi-person-fill" style="font-size:20px;"></i>
                 <a href="/login/">Sign In</a>
                 {% else %}
+                <i class="bi bi-person-fill" style="font-size:20px;"></i>
                 <a href="/profile/{{user.id}}">{{user.firstname}} {{user.lastname}}</a>
                 {% endif %}
             </div>
@@ -32,7 +33,7 @@
             <div class="search-bar">
                 <form action="">
                     {% csrf_token %}
-                    <input class="searchbox" type="text" name="search" placeholder="search anything">
+                    <input class="searchbox" type="text" name="search" placeholder="Search idioms">
                     <input class="searchbutton" type="submit" value="search">
                 </form>
             </div>
@@ -41,13 +42,15 @@
       <div class="aboutbody bodylimit">
         <div class="widesection">
           <div class="aboutcontent card">
-			<h1>who we are</h1>
-			<p>fill info here</p>
+			<h1>Who we are</h1>
+			<p>Idiomastery is an idiom library website that serves as a rich source of cultural information for language learners who want to take their education to the next level. The importance of learning idioms cannot be overstated - they add richness, color, and cultural depth to language, while helping speakers express complex ideas or emotions in a concise and often vivid way.</p>
+            <p>The website was created by three web developers from Palestine as part of their Python stack training during a Full Stack Bootcamp at Axsos Academy in Ramallah.</p>  
+            <p>We hope that learners will benefit from the resources presented on this site—and, ideally, contribute to them—as they continue to improve their language skills and move closer to fluency.</p>    
 		  </div>
         </div>
         <div div class="sidesection">
           <div class="siteinfo card">
-			<p>this website has been running since(insert time)</p>
+			<p>This website has been running since(insert time)</p>
 			<p>something about the site</p>
           </div>
         </div>

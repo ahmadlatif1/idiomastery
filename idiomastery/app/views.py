@@ -52,8 +52,11 @@ def serve_about(request):
     return render(request, 'about.html', {'user':user})
 
 def serve_create(request):
+    user='none'
+    if 'userid' in request.session:
+        user=User.objects.get(id=request.session['userid'])
 
-    return render(request, 'create.html', {})
+    return render(request, 'create.html', {'user':user})
 
 def get_profile(request):
     if 'userid' in request.session:
@@ -66,6 +69,7 @@ def register(request):
     # NOTE TO MAKE SURE TO ADD CONFIRM PASSWORD TO VALIDATION
     errors=User.objects.user_validator(post=request.POST)
     if len(errors)>0:
+        print(errors)
         return redirect('/',errors)
     # validate input
     password= request.POST['password']

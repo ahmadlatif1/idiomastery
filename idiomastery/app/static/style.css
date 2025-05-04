@@ -15,7 +15,7 @@ auxiliary second (background for login): lighter eggshell #FFFDF6
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: "Balsamiq Sans";
+	font-family: "Saira", sans-serif;
 }
 
 body {
@@ -45,7 +45,7 @@ body {
 
 .bodylimit {
 	width: 100%;
-	max-width: 1200px;
+	max-width: 1000px;
 	/* make sure this is same as the nav bar limit */
 
 }
@@ -99,7 +99,7 @@ body {
 	text-align: center;
 	padding: 20px 20px;
 
-	font-size: 1.8em;
+	font-size: 1.4em;
 	gap: 20px;
 	height: 200px;
 
@@ -130,7 +130,7 @@ body {
 	.idiombody {
 		display: flex;
 		flex-flow: column;
-		font-size: 1.4em;
+		font-size: 1.2em;
 	}
 
 	.idiomcardbottom {
@@ -197,7 +197,7 @@ header {
 
 .header {
 	width: 100%;
-	max-width: 1200px;
+	max-width: 1000px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -414,7 +414,7 @@ input {
 	padding: 10px;
 	padding-top: 0;
 	margin-top: -5px;
-	max-width: 1200px;
+	max-width: 1000px;
 	width: 100%;
 
 	.search-bar{
@@ -495,4 +495,16 @@ input {
 	flex-flow: row;
 	padding: 20px;
 	font-size: 0.6em;
+}
+
+.aboutcontent{
+	padding: 40px 60px;
+
+	p{
+		padding: 10px;
+	}
+}
+
+.siteinfo{
+	padding: 40px 30px;
 }
