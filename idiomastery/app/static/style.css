@@ -22,7 +22,9 @@ body {
 	display: flex;
 	flex-flow: column;
 	align-items: center;
-	min-height: 100%;
+	height: 100vh;
+	position: relative;
+	justify-content: space-between;
 }
 
 .registerpage,
@@ -47,10 +49,40 @@ body {
 .bodylimit {
 	width: 100%;
 	max-width: 1000px;
+	flex: 1;
 	/* make sure this is same as the nav bar limit */
 	
 
 }
+
+footer{
+	display: flex;
+	position: relative;
+	bottom: 0;
+
+	justify-content: space-around;
+	justify-self: flex-end;
+	align-items: center;
+	text-align: center;
+	background-color: #f6eac2;
+	height: 60px;
+	width: 100%;
+	div{
+		display: flex;
+		align-items: center;
+		gap: 2px;
+	p{
+		margin-right: 5px;
+	}	
+	}
+	img{
+		height: 30px;
+	}
+	a{
+		margin-bottom: -7px;
+	}
+}
+
 
 .explorebody,
 .aboutbody,
@@ -558,34 +590,8 @@ input {
 	  }
 
 	
-	}
+}
   
 .error{
 	color: red;
-}
-
-footer{
-	display: flex;
-	justify-content: space-around;
-	justify-self: flex-end;
-	align-items: center;
-	text-align: center;
-	background-color: #f6eac2;
-	height: 60px;
-	width: 100%;
-	margin-top: 100px;
-	div{
-		display: flex;
-		align-items: center;
-		gap: 2px;
-	p{
-		margin-right: 5px;
-	}	
-	}
-	img{
-		height: 30px;
-	}
-	a{
-		margin-bottom: -7px;
-	}
 }
