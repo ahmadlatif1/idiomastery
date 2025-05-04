@@ -140,9 +140,11 @@ def edit(request, id):
     return redirect("/")
 
 
-def search(request,query):
+def search(request):
     
-    query
+    query=''
+    if request.method == "GET":
+        query=request.GET.get('search')
     words=query.split(' ')
     idioms = Idiom.objects.none()
     for word in words:
@@ -157,5 +159,5 @@ def search(request,query):
         'results':idioms,
         'idioms':Idiom.objects.all(),
     }
-    print("idioms: ",idioms[0].phrase)
+    print("idioms: ",idioms)
     return render(request,'explore.html',context)

@@ -16,7 +16,7 @@ urlpatterns = [
     path('a/register',views.register),
     path('a/logout',views.logout),
     path('a/create',views.create),
-    path('search/<str:query>',views.search),
+    path('search/',views.search, name='search'),
     
     path('<int:id>/edit/',views.edit),
     path('<int:id>/delete/',views.delete),

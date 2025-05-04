@@ -30,8 +30,7 @@
         </div>
         <div class="search-bar-container">
             <div class="search-bar">
-                <form action="/search/" method="GET">
-                    {% csrf_token %}
+                <form action="{% url 'search' %}" method="GET">
                     <input class="searchbox" type="text" name="search" placeholder="search anything">
                     <input class="searchbutton" type="submit" value="search">
                 </form>
