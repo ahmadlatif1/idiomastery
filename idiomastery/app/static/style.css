@@ -564,13 +564,17 @@ input {
 
 .carousel-inner img {
 	width: 1000px;
-	height: 500px;
+	height: 300px;
 	object-fit: cover;
 	margin: 10px 0px;
+	justify-content: center;
+	align-items: center;
   }
 
   .carousel-container{
 	width: 1000px;
-	height: 500px;
+	height: 300px;
 	overflow: hidden;
+	/* justify-content: center;
+	align-items: center; */
   }
