@@ -576,6 +576,16 @@ footer{
 	margin-top: 100px;
 	div{
 		display: flex;
-
+		align-items: center;
+		gap: 2px;
+	p{
+		margin-right: 5px;
+	}	
+	}
+	img{
+		height: 30px;
+	}
+	a{
+		margin-bottom: -7px;
 	}
 }
