@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <title>Idiomastery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">    <title>Idiomastery</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
@@ -32,7 +31,7 @@
             <div class="search-bar">
                 <form action="">
                     {% csrf_token %}
-                    <input class="searchbox" type="text" name="search" placeholder="search anything">
+                    <input class="searchbox" type="text" name="search" placeholder="Search idioms">
                     <input class="searchbutton" type="submit" value="search">
                 </form>
             </div>
