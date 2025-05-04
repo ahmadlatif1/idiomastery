@@ -131,6 +131,7 @@ body {
 		display: flex;
 		flex-flow: column;
 		font-size: 1.2em;
+		overflow: hidden;
 	}
 
 	.idiomcardbottom {
@@ -508,3 +509,51 @@ input {
 .siteinfo{
 	padding: 40px 30px;
 }
+
+.tags_container{
+	display: flex;
+	flex-flow: column;
+	gap: 20px;
+}
+
+@media (max-width: 768px) {
+	.profilebody,.createbody {
+	  flex-direction:  column-reverse;
+	  align-items: center;
+	}
+
+	.aboutbody,.explorebody,.detailbody{
+		flex-direction: column;
+		align-items: center;
+	}
+	.aboutcontent{
+		padding: 10px;
+	}
+	.mainidiom{
+		flex-direction: row;
+		overflow-x: scroll;
+		scrollbar-width: 0;
+		scroll-snap-type: x mandatory;
+	}
+	
+	.idiomcard{
+		scroll-snap-align: start;
+		flex: 0 0 auto;
+	}
+
+	.tags_container{
+		flex-flow: row;
+	}
+
+	.widesection, .sidesection {
+	  flex: unset; /* remove flex sizing when stacked */
+	}
+
+	.widesection, .sidesection {
+		margin: 0 40px;
+		width: 80%;
+	  }
+
+	
+	}
+  
