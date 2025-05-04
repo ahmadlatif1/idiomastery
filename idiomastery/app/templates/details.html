@@ -115,7 +115,7 @@
             
             
         </div>
-        <div class="sidesection">
+        <div class="sidesection add-and-tags">
             <div class="card add-idiom-card">
                 <span>do you have an idiom?</span>
                 {% if user == 'none' %}
@@ -123,20 +123,23 @@
                 {% else %}
                 <a class="submitbutton" href="/create/"> Add it Here!</a>
                 {% endif %}            </div>
-            <div class="sidecardcontainer">
+            <div class='tags_container'>
+                <div class="sidecardcontainer">
                 <span>Similarly Tagged</span>
                 <div class="sidecard card">
 
                 </div>
-            </div>
-            <div class="sidecardcontainer">
+                </div>
+                <div class="sidecardcontainer">
                 <span>Equivalent Idioms</span>
                 <div class="sidecard card">
                     {% for item in related %}
                     <a href="item.id" class="nodecoration keepblue">{{item.phrase}}</a>
                     {% endfor %}
                 </div>
-            </div>
+                </div>
+        </div>
+            
         </div>
     </div>
 </body>

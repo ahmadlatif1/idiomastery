@@ -40,11 +40,18 @@
 	  <form action="/a/login" method="POST">
 		<h1>Welcome Back</h1>
 		<p>Welcome back! Please enter your details.</p>
-		  {% csrf_token %}
-		  <input type="email" id="email" name="email" placeholder="email">
-		  <input type="password" id="password" name="password" placeholder="password">
+		{% csrf_token %}
+		<input type="email" id="email" name="email" placeholder="email">
+		{% if errors.email %}
+    	<span class="error">{{errors.email}}</span>
+      	{% endif %}
+		
+		<input type="password" id="password" name="password" placeholder="password">
+		{% if errors.password %}
+      	<span class="error">{{errors.password}}</span>
+      	{% endif %}
 
-		  <button class="submitbutton" type="submit">Sign in</button>
+		<button class="submitbutton" type="submit">Sign in</button>
 	  </form>
 
 	  <p class="signup-text">Don't have an account? <a href="/register/">Sign up for free</a></p>

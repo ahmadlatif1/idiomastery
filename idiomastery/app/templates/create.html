@@ -51,9 +51,21 @@
 				<form action="/a/create" method="POST">
 					{% csrf_token %}
 					<input type="text" name="phrase" placeholder="The Idiom says what?" id="idiom">
+					{% if errors.phrase %}
+      				<span class="error">{{errors.phrase}}</span>
+      				{% endif %}
 					<textarea name="meaning" id="meaning" placeholder="what does the idiom mean?"></textarea>
+					{% if errors.meaning %}
+      				<span class="error">{{errors.meaning}}</span>
+      				{% endif %}
 					<textarea name="example" id="example" placeholder="Example(optional)"></textarea>
+					{% if errors.example %}
+      				<span class="error">{{errors.example}}</span>
+      				{% endif %}
 					<textarea name="origin" id="origin" placeholder="Origin/history (optional)"></textarea>
+					{% if errors.origin %}
+      				<span class="error">{{errors.origin}}</span>
+      				{% endif %}
 					<div class="button-container">
 						<button class="submitbutton">Publish</button>
 					</div>
