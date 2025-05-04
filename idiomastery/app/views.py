@@ -56,8 +56,11 @@ def serve_create(request):
     return render(request, 'create.html', {})
 
 def get_profile(request):
-    user=request.session['userid']
-    return redirect(f'/profile/{user}')
+    if 'userid' in request.session:
+        user=request.session['userid']
+        return redirect(f'/profile/{user}')
+    else:
+        return redirect('/login')
 
 def register(request):
     # NOTE TO MAKE SURE TO ADD CONFIRM PASSWORD TO VALIDATION
@@ -67,8 +70,8 @@ def register(request):
     # validate input
     password= request.POST['password']
     pw_hash=bcrypt.hashpw(password.encode('utf-8'),bcrypt.gensalt()).decode('utf-8')
-    firstname=request.POST['firstname']
-    lastname=request.POST['lastname']
+    firstname=request.POST['firstname'].capitalize()
+    lastname=request.POST['lastname'].capitalize()
     email=request.POST['email']
     User.objects.create(firstname=firstname,lastname=lastname,email=email,password=pw_hash)
 
@@ -76,10 +79,13 @@ def register(request):
     return redirect("/")
 
 def login(request):
+    print("post request",request.POST)
     user=User.objects.filter(email=request.POST['email'])
     if user:
         logged_user=user[0]
+        print('user:',user)
         if bcrypt.checkpw(request.POST['password'].encode('utf-8'), logged_user.password.encode('utf-8')):
+            print("logged user",logged_user)
             request.session['userid']=logged_user.id
             
     return redirect('/')
