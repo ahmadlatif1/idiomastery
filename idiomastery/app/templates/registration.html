@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">    <title>Idiomastery</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Log In</title>
@@ -38,15 +38,35 @@
   <div class="form-container">
     <h1>Register your account</h1>
     <p>
-      Or <a href="#">click here</a> to login if you already have an existing account.
+      Or <a href="/login/">click here</a> to login if you already have an existing account.
     </p>
     <form action="/a/register" method="POST">
       {% csrf_token %}
-      <input type="text" name="firstname" placeholder="First name" required />
+
+      <input type="text" name="firstname" placeholder="First name" required /> 
+      {% if errors.firstname %}
+      <span class="error">{{errors.firstname}}</span>
+      {% endif %}
+
       <input type="text" name="lastname" placeholder="Last name" required />
+      {% if errors.lastname %}
+      <span class="error">{{errors.lastname}}</span>
+      {% endif %}
+
       <input type="email" name="email" placeholder="Email" required />
+      {% if errors.email %}
+      <span class="error">{{errors.email}}</span>
+      {% endif %}
+
       <input type="password" name="password" placeholder="Password" required />
+      {% if errors.password %}
+      <span class="error">{{errors.password}}</span>
+      {% endif %}
+
       <input type="password" name="confirmpassword" placeholder="Confirm password" required />
+      {% if errors.confirmpassword %}
+      <span class="error">{{errors.confirmpassword}}</span>
+      {% endif %}
       <button class="submitbutton" type="submit">Sign up</button>
     </form>
   </div>
