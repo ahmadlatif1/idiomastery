@@ -132,6 +132,7 @@ body {
 		flex-flow: column;
 		font-size: 1.2em;
 		overflow: hidden;
+		gap: 15px;
 	}
 
 	.idiomcardbottom {
@@ -557,3 +558,6 @@ input {
 	
 	}
   
+.error{
+	color: red;
+}
