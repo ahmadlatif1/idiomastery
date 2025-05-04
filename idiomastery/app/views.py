@@ -45,14 +45,20 @@ def serve_details(request,id):
 
     idiom=Idiom.objects.get(id=id)
 
+    translations='none'
+    if idiom.translations.all():
+        translations = idiom.translations.all()
+
     context={
         'user':user,
         'idiom':idiom,
-        'translations':idiom.translations,
+        'translations':translations,
+
         'related':Idiom.objects.filter(related=idiom.related)
         
     }
-    print(context['related'])
+    print('related:',context['related'])
+    print('itranslations',translations)
     return render(request, 'details.html',context)
 
 def serve_about(request):
@@ -184,3 +190,14 @@ def search(request):
     }
     print("idioms: ",idioms)
     return render(request,'explore.html',context)
+
+def addtranslation(request,id):
+
+    # create a translation
+    idiom=Idiom.objects.get(id=id)
+    text=request.POST['text']
+    language=request.POST['language']
+    Translation.objects.create(text=text,idiom=idiom,language=language)
+
+
+    return redirect(f"/{id}")

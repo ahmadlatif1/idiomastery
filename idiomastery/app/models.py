@@ -66,8 +66,9 @@ class Idiom(models.Model):
     objects=IdiomManager()
 
 class Translation(models.Model):
-    score=models.IntegerField()
-    language=models.CharField(default="English")
+    text=models.CharField(max_length=255)
+    score=models.IntegerField(default=0)
+    language=models.CharField(default="English", max_length=50)
     idiom=models.ForeignKey(Idiom, related_name="translations", on_delete = models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True) 
     updated_at=models.DateTimeField(auto_now=True)
