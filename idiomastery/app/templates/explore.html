@@ -68,7 +68,12 @@
         <div class="sidesection">
             <div class="card add-idiom-card">
                 <span>do you have an idiom?</span>
+                {% if user == 'none' %}
+                <a class="submitbutton" href="/login/"> Add it Here!</a>
+
+                {% else %}
                 <a class="submitbutton" href="/create/"> Add it Here!</a>
+                {% endif %}
             </div>
             <div class="populartags">
                 <h1>Popular tags</h1>
