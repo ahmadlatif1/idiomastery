@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <title>Idiomastery</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
@@ -22,8 +23,10 @@
             
             <div class="auth-link">
                 {% if user == 'none' %}
+                <i class="bi bi-person-fill" style="font-size:20px;"></i>
                 <a href="/login/">Sign In</a>
                 {% else %}
+                <i class="bi bi-person-fill" style="font-size:20px;"></i>
                 <a href="/profile/{{user.id}}">{{user.firstname}} {{user.lastname}}</a>
                 {% endif %}
             </div>
@@ -44,7 +47,7 @@
             <div class="idiomcard card">
                 <div class="idiomhead">
                     <span class="idiom-phrase">{{idiom.phrase}}</span>
-                    <img src="" alt="" class="likebtn">
+                    <i class="bi bi-heart" style="font-size: 24px;"></i>
                 </div>
                 <div class="idiombody">
                     <span>Meaning: {{idiom.meaning}}</span>

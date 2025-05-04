@@ -52,8 +52,11 @@ def serve_about(request):
     return render(request, 'about.html', {'user':user})
 
 def serve_create(request):
+    user='none'
+    if 'userid' in request.session:
+        user=User.objects.get(id=request.session['userid'])
 
-    return render(request, 'create.html', {})
+    return render(request, 'create.html', {'user':user})
 
 def get_profile(request):
     if 'userid' in request.session:
