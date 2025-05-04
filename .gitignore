@@ -173,3 +173,4 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 /idiomastery/app/migrations/0001_initial.py
+idiomastery/app/migrations/0002_idiom_score_translation_score.py
