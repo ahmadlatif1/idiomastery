@@ -83,8 +83,9 @@
                         <div id="tag-list" class="taglist">
                         
                             {% for tag in idiom.tags.all %}
-                            <div class="tag">{{ tag.name }}</div>
-                            {% endfor %}
+                            <form action="{% url 'tag' %}" method="GET">
+                                <input type="submit" name="tag" class="tag" value="{{ tag.name }}">
+                            </form>                            {% endfor %}
                             <div class="tagsearch card">
                                 <input type="hidden" value="{{ idiom.id }}" id="idiom-id">
                                 <input autocomplete="off" class="tagsearchinput" type="text" id="search-bar" placeholder="tag" list="tag-options">

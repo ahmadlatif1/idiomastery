@@ -105,7 +105,7 @@
                 <div class="searchresults">
 
                 {% if results %}
-                    <h2>Search results:</h2>
+                    <h2 style="margin-bottom=-30px">Search results:</h2>
 
                 {% for idiom in results %}
                 <div class="idiomcard card">
@@ -130,7 +130,6 @@
                     </div>
                     <div class="idiomcardbottom">
                         <span><a class="keepblue nodecoration" href="/{{idiom.id}}">Read More</a></span>
-                        <span class="authorsubtitle">written by: <a class="nodecoration keepblue" href="/profile/{{idiom.user.id}}">{{idiom.user.firstname}} {{idiom.user.lastname}} </a> ({{idiom.created_at|date:'Y-m-d'}})</span>
                         <div class="taglist">
                             {% for tag in idiom.tags.all %}
                             <form action="{% url 'tag' %}" method="GET">
@@ -170,7 +169,6 @@
                     </div>
                     <div class="idiomcardbottom">
                         <span><a class="keepblue nodecoration" href="/{{idiom.id}}">Read More</a></span>
-                        <span class="authorsubtitle">written by: <a class="nodecoration keepblue" href="/profile/{{idiom.user.id}}">{{idiom.user.firstname}} {{idiom.user.lastname}} </a> ({{idiom.created_at|date:'Y-m-d'}})</span>
                         <div class="taglist">
                             {% for tag in idiom.tags.all %}
                             <form action="{% url 'tag' %}" method="GET">
@@ -193,7 +191,7 @@
                     {% endif %}
                 </div>
                 <div class="populartags">
-                    <h1>Popular tags</h1>
+                    <h1>Popular tags:</h1>
                     <div class="taglist">
                         {% for item in tags %} 
                         <form action="{% url 'tag' %}" method="GET">
