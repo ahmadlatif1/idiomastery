@@ -1,0 +1,835 @@
+/* 
+Color palette: 
+
+Main (nav bar): green #A0C878  
+
+secondary (buttons, small elements): pale lime #f0f1c5 
+
+auxiliary (background for contrast with elements): darker eggshell #FAF6E9 
+
+auxiliary second (background for login): lighter eggshell #FFFDF6 
+
+*/
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Saira", sans-serif;
+}
+
+body {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	height: 100vh;
+	position: relative;
+	justify-content: space-between;
+}
+
+.registerpage,
+.loginpage {
+	background-color: #fffbec;
+}
+
+.aboutpage,
+.createpage,
+.explorepage,
+.profilepage,
+.detailpage {
+	background-color: #fffbec;
+}
+
+.card {
+	border: 2px solid black;
+	border-radius: 10px;
+	background-color: white;
+}
+
+.bodylimit {
+	width: 100%;
+	max-width: 1000px;
+	flex: 1;
+	/* make sure this is same as the nav bar limit */
+	
+
+}
+
+footer{
+	display: flex;
+	position: relative;
+	bottom: 0;
+
+	justify-content: space-around;
+	justify-self: flex-end;
+	align-items: center;
+	text-align: center;
+	background-color: #f6eac2;
+	height: 60px;
+	width: 100%;
+	div{
+		display: flex;
+		align-items: center;
+		gap: 2px;
+	p{
+		margin-right: 5px;
+	}	
+	}
+	img{
+		height: 30px;
+	}
+	a{
+		margin-bottom: -7px;
+	}
+}
+
+
+.explorebody,
+.aboutbody,
+.createbody,
+.profilebody,
+.detailbody {
+	display: flex;
+	padding: 40px 0;
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+	gap: 30px;
+}
+
+.widesection {
+
+	width: 75%;
+
+	display: flex;
+	flex-flow: column;
+	justify-content: stretch;
+	align-items: center;
+	gap: 10px;
+
+	.card {
+		width: 100%;
+	}
+
+	.searchresults{
+		margin-top: -10px;
+	}
+
+}
+.fakeinput{
+	border: none;
+	background:none;
+	text-decoration: underline;
+	text-underline-offset:10px;
+}
+
+
+.sidesection {
+	width: 25%;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	gap: 30px;
+
+	.card {
+		width: 100%;
+	}
+}
+
+.sidecardcontainer .sidecard{
+	display: flex;
+	flex-flow: column;
+	gap: 5px;
+	padding: 10px;
+}
+
+.add-idiom-card {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 20px 20px;
+
+	font-size: 1.4em;
+	gap: 20px;
+	height: 200px;
+
+}
+
+.tagcontainer{
+	display: flex;
+	flex-direction:  column;
+	align-items: flex-end;
+}
+
+
+
+.idiomcard {
+	display: flex;
+	flex-flow: column;
+
+	padding: 20px;
+	min-height: 200px;
+	justify-content: space-between;
+
+
+	.idiomhead {
+
+		display: flex;
+		justify-content: space-between;
+
+		.idiom-phrase {
+			font-size: 2.2em;
+			font-weight: 600;
+		}
+	}
+
+	.idiombody {
+		display: flex;
+		flex-flow: column;
+		span {
+			font-size: 1.3em !important;
+			input{
+				font-size: 1.1em !important;
+			}
+
+		}
+		overflow: hidden;
+		gap: 15px;
+	}
+
+	.idiomcardbottom {
+		display: flex;
+		justify-content: space-between;
+		align-items:end;
+		margin-bottom: -5px;
+		gap: 20px;
+
+		span {
+			font-size: 1.2em;
+			text-wrap:nowrap;
+		}
+		.taglist{
+			text-wrap: none;
+			padding: 5px;
+		}
+	}
+
+}
+.add-idiom-card span{
+	color: white;
+	font-size:larger;
+	font-weight: 600;
+}
+
+.tag {
+	color: black;
+	text-decoration: none;
+	background-color: #f0f1c5;
+	border: 2px solid black;
+	border-radius: 15px;
+	height: 30px;
+	padding: 1px 15px;
+	text-align: center;
+	cursor: pointer;
+	box-shadow: 1px 2px 3px #777;
+	&:hover {
+		background-color: #e6e1b8;
+	}
+}
+
+.taglist {
+	display: flex;
+	flex-flow: row-reverse wrap;
+	gap: 10px 5px;
+	align-items: flex-end ;
+	flex-shrink: 1;
+
+
+}
+
+.tagsearch{
+	display: flex;
+	flex-flow: row;
+	height: 30px;
+	justify-content: flex-end;
+	width: fit-content !important;
+	border-radius: 15px;
+	flex-shrink: 1;
+	box-shadow: 1px 2px 3px #777;
+	padding: 2px;
+	
+	
+	.tagsearchinput{
+		background-color: white;
+		
+		border:none;
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+		width: 60px;
+	}
+	button{
+		border:none;
+		border-top-right-radius: 10px;
+		border-bottom-right-radius: 10px;
+		border-left: 2px solid #ccc;
+		font-size: 0.8em;
+		background-color: white;
+		padding: 0 2px;
+		cursor: pointer;
+
+	}
+}
+.populartags {
+	width: 100%;
+	text-align: center;
+	display: flex;
+	flex-flow: column;
+	gap: 10px;
+	min-height: 100px;
+	padding: 0px 10px;
+	h1{
+		font-size: 1.8em;
+	}
+	.taglist{
+		align-items: center ;
+		justify-content: center;
+	}
+}
+
+
+
+header {
+	width: 100%;
+	background-color: #A0C878;
+
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.header {
+	width: 100%;
+	max-width: 1000px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding:0px 10px;
+	gap: 0;
+	header-start {
+		
+		padding-top: 5px;
+	
+	}
+	/* height: 63.8px; */
+
+}
+
+
+.logo img {
+	width: 240px;
+	padding: 0px 0px 10px 0px ;
+	object-fit: cover;
+	
+}
+
+.nav-links {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+
+	a {
+		text-decoration: none;
+		color: #0645AD;
+		font-weight: normal;
+	}
+
+	.separator {
+		color: #333;
+
+	}
+}
+
+
+.auth-link a {
+	text-decoration: none;
+	color: #0645AD;
+}
+
+.likesection{
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	span{
+		min-width: 20px;
+	}
+}
+.likebutton{
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+
+input {
+	padding: 10px;
+	border: 1px solid #999;
+	border-radius: 2px;
+	font-size: 14px;
+}
+
+.submitbutton {
+	text-decoration: none;
+	color: black;
+	padding: 10px;
+	background-color: #fbfce3;
+	/* border: 1px solid black; */
+	cursor: pointer;
+	font-size: 16px;
+	border-radius: 10px;
+
+	&:hover {
+		background-color: #e6e1b8;
+	}
+}
+
+
+.signup-text {
+	margin-top: 20px;
+	font-size: 12px;
+
+	a {
+		text-decoration: underline;
+		color: #007bff;
+		font-size: 12px;
+	}
+}
+
+
+.searchresults{
+	display: flex;
+	flex-flow: column;
+	gap:10px;
+	width: 100%;
+}
+
+
+.form-container  {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	padding: 40px 20px;
+
+	gap: 10px;
+	max-width: 400px;
+
+	h1 {
+		font-size: 2rem;
+		font-weight: bold;
+	}
+
+	p {
+		font-size: 0.95rem;
+
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+	}
+}
+
+
+.createbox {
+
+	background-color: white;
+	display: flex;
+	flex-flow: column;
+	padding: 40px 60px;
+
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 15px;
+
+		textarea {
+			padding: 10px;
+			border: 1px solid #999;
+			border-radius: 2px;
+			font-size: 14px;
+			resize: none;
+		}
+
+
+		input {
+			padding: 12px;
+			font-size: 1rem;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+		}
+
+	}
+
+	input {
+		padding: 12px;
+		font-size: 1rem;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+	}
+
+	#idiom {
+		height: 50;
+		border: 1px solid #a9a9a9;
+	}
+
+	#meaning {
+		height: 100px;
+	}
+
+	#example {
+		height: 100px;
+	}
+
+	#origin {
+		height: 300px;
+	}
+
+
+}
+
+.button-container {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+
+
+}
+
+
+.guidelines {
+	background-color: white;
+	padding: 20px 10px;
+	display: flex;
+	flex-flow: column;
+
+	h2 {
+		text-align: center;
+	}
+
+	h4 {
+		margin-top: 10px;
+	}
+
+	li {
+		margin-top: 5px;
+		margin-left: 20px;
+		line-height: 1;
+	}
+}
+
+.profilecard{
+	margin-top: 60px;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	padding: 20px;
+	gap: 20px;
+	
+	.name{
+		font-size: 2em;
+		
+	}
+
+}
+.h-explore{
+	height: 63.8px;
+	gap: 5px;
+}
+
+.header-start{
+	display: flex;
+	gap: 40px;
+}
+
+.search-bar-container{
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	padding: 10px;
+	padding-top: 0;
+	margin-top: -5px;
+	max-width: 1000px;
+	width: 100%;
+
+	.search-bar{
+		width: 100%;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content:center;
+		
+		form{
+			width: 100%;
+			display: flex;
+			flex-flow: row;
+		}
+		.searchbox{
+			width: 100%;
+			display: flex;
+			flex-flow: row;
+			height: 40px;
+
+			background-color: white;
+			border:1px solid #ccc;
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;
+
+		}
+		.searchbutton{
+			padding: 5px 20px;
+			height: 40px;
+			background-color: white;
+			border:1px solid #ccc;
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+			cursor: pointer;
+			&&:hover{
+				background-color: #eee;
+			}
+		}
+	}
+}
+
+.nodecoration{
+	
+	text-decoration: none;
+}
+.keepblue{
+	color:#007bff;
+}
+
+.translations-container,.origincard{
+	padding: 20px;
+	min-height: 200px;
+	display: flex;
+	flex-flow: column;
+	gap: 10px;
+
+	
+	
+}
+.origin-body{
+	padding: 20px;
+	font-size: 1.2em;
+	line-height: 1.3;
+}
+.translations-container,.origin-title{
+	font-size: 2em;
+}
+.authorsubtitle{
+	font-size:1em !important;
+	color: #666;
+
+}
+.translations-container{
+	display: flex;
+	flex-flow: column;
+}
+.translationcard{
+	background-color: #eee;
+	border-radius: 10px;
+
+	display: flex;
+	flex-flow: column;
+	gap: 10px;
+	padding: 20px;
+	font-size: 0.6em;
+}
+.translationitem{
+	display: flex;
+	flex-flow: column;
+	padding: 0 20px 10px 20px;
+
+}
+
+.translationinner{
+	display: flex;
+	justify-content: space-between;
+	
+}
+.addtranslation{
+
+	
+	form{
+		display: flex;
+		flex-flow: row;
+
+		padding: 5px;
+		align-items: center;
+	
+
+
+
+		input{
+			border: none;
+			background-color: white;
+			height: 30px;
+		}
+		.comment{
+			
+			flex-grow: 1;
+			margin-right: 5px;
+		}
+		select{
+			margin-top: 0;
+			border: none;
+			background-color: white;
+		}
+		.translationsubmit{
+
+			height: 30px;
+			padding: 0 5px;
+			margin: 0;
+			text-align: center;
+			cursor: pointer;
+
+
+			&&:hover{
+				background-color: #ccc	;
+			}
+		}
+	}
+}
+.languagelabel{
+	border: 2px solid #666;
+	color: #666;
+	font-weight: 600;
+	background-color: #ccc;
+	border-radius: 10px;	
+	padding: 3px 5px;
+	font-size: 0.7em;
+	width: fit-content;
+	align-self: flex-end;
+	margin-top: -15px;
+}
+
+.aboutcontent{
+	padding: 40px 60px;
+
+	p{
+		padding: 10px;
+	}
+}
+
+.siteinfo{
+	padding: 40px 30px;
+}
+
+.tags_container{
+	display: flex;
+	flex-flow: column;
+	gap: 20px;
+}
+
+@media (max-width: 768px) {
+	.profilebody,.createbody {
+	  flex-direction:  column-reverse;
+	  align-items: center;
+	}
+
+	.aboutbody,.explorebody,.detailbody{
+		flex-direction: column;
+		align-items: center;
+	}
+	.aboutcontent{
+		padding: 10px;
+	}
+	.mainidiom{
+		flex-direction: row;
+		overflow-x: scroll;
+		scrollbar-width: 0;
+		scroll-snap-type: x mandatory;
+	}
+	
+	.idiomcard{
+		scroll-snap-align: start;
+		flex: 0 0 auto;
+	}
+
+	.tags_container{
+		flex-flow: row;
+	}
+
+	.widesection, .sidesection {
+	  flex: unset; /* remove flex sizing when stacked */
+	}
+
+	.widesection, .sidesection {
+		margin: 0 40px;
+		width: 80%;
+	  }
+
+	
+}
+  
+.error{
+	color: red;
+}
+
+.carousel-inner img {
+	width: 1000px;
+	height: 300px;
+	object-fit: cover;
+	margin: 10px 0px;
+	justify-content: center;
+	align-items: center;
+}
+
+.carousel-container{
+	width: 1000px;
+	height: 300px;
+	overflow: hidden;
+	box-shadow: 0px 15px 15px 0px #a7b492; ;
+/* justify-content: center;
+align-items: center; */
+}
+
+
+  .animated-background {
+	background: linear-gradient(270deg, #8ea1f5, #5ea85b, #b68bd0);
+	background-size: 600% 600%;
+	animation: animatedGradient 8s ease infinite;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+  }
+  
+  /* Keyframes for smooth gradient shift */
+  @keyframes animatedGradient {
+	0% {
+	  background-position: 0% 50%;
+	}
+	50% {
+	  background-position: 100% 50%;
+	}
+	100% {
+	  background-position: 0% 50%;
+	}
+  }
+
+  
+.languageselect{
+	font-size: 0.5em;
+}
+
+.languageselectcontainer{
+	display: flex;
+	gap: 5px;
+}
