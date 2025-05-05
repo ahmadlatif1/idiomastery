@@ -29,6 +29,11 @@ function likeIdiom(idiomId) {
     });
 }
 
+
+
+
+
+
 // Helper function to get CSRF token from cookies (required for Django POST requests)
 function getCookie(name) {
     let cookieValue = null;

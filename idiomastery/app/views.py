@@ -47,12 +47,14 @@ def serve_details(request,id):
     
     user='none'
     liked_idiom=False
+    idiom=Idiom.objects.get(id=id)
     if 'userid' in request.session:
         user=User.objects.get(id=request.session['userid'])
         liked_idiom = LikedIdioms.objects.filter(user=user, idiom=idiom).exists()
 
 
     idiom=Idiom.objects.get(id=id)
+    tags=idiom.tags.all()
 
     translations='none'
     if idiom.translations.all():
@@ -63,6 +65,7 @@ def serve_details(request,id):
         'user':user,
         'idiom':idiom,
         'translations':translations,
+        'tags': tags,
         
         'liked': liked_idiom,
         'related':Idiom.objects.filter(related=idiom.related)
@@ -214,7 +217,24 @@ def addtranslation(request,id):
     return redirect(f"/{id}")
 
 
-# a like function that increases the score of an idiom, iit should be called by ajax
+
+def add_tag(request,tag,id):
+    print("add tag",tag)
+
+    if Tag.objects.filter(name=tag).exists():
+        print("tag exists")
+    else:
+        print("tag does not exist")
+        Tag.objects.create(name=tag)
+
+    idiom=Idiom.objects.get(id=id)
+    pagetag=Tag.objects.get(name=tag)
+    print(pagetag)
+    
+    idiom.tags.add(pagetag)
+    return JsonResponse({'message': 'Tag added successfully', 'tag': tag}, status=200)
+
+
 
 def like_idiom(request, id):
 
@@ -240,3 +260,18 @@ def like_idiom(request, id):
     
 
     return JsonResponse({'message': 'Idiom liked successfully', 'score': idiom.score, 'liked': liked}, status=200)
+
+
+def search_tags(request,search):
+
+    print("search tags",request,search)
+    
+    if request.method == "GET":
+        tags = Tag.objects.filter(name__icontains=search)
+        taglist=[]
+        for tag in tags:
+            taglist.append(tag.name)
+
+        print("taglist",taglist)
+        return JsonResponse({'tags': taglist}, status=200)
+    return JsonResponse({'error': 'Invalid request method'}, status=400)

@@ -191,7 +191,7 @@ footer{
 	border: 2px solid black;
 	border-radius: 15px;
 	height: 30px;
-	padding: 4px 15px;
+	padding: 1px 15px;
 	text-align: center;
 	cursor: pointer;
 	box-shadow: 1px 2px 3px #777;
@@ -202,10 +202,46 @@ footer{
 
 .taglist {
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row-reverse wrap;
+	gap: 10px 5px;
+	align-items: flex-end;
+
 
 }
 
+
+.tagsearch{
+	display: flex;
+	flex-flow: row;
+	height: 30px;
+	justify-content: flex-end;
+	width: fit-content !important;
+	border-radius: 15px;
+	flex-shrink: 1;
+	box-shadow: 1px 2px 3px #777;
+	padding: 2px;
+	
+	
+	.tagsearchinput{
+		background-color: white;
+		
+		border:none;
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+		width: 60px;
+	}
+	button{
+		border:none;
+		border-top-right-radius: 10px;
+		border-bottom-right-radius: 10px;
+		border-left: 2px solid #ccc;
+		
+		background-color: white;
+		padding: 0 2px;
+		cursor: pointer;
+
+	}
+}
 .populartags {
 	width: 100%;
 	text-align: center;
@@ -690,12 +726,13 @@ input {
 	margin: 10px 0px;
 	justify-content: center;
 	align-items: center;
-  }
+}
 
-  .carousel-container{
-	width: 1000px;
-	height: 300px;
-	overflow: hidden;
-	/* justify-content: center;
-	align-items: center; */
-  }
+.carousel-container{
+width: 1000px;
+height: 300px;
+overflow: hidden;
+/* justify-content: center;
+align-items: center; */
+}
+

@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <title>Idiomastery</title>
     {% load static %}
+    <script src="{% static 'js/add_tag.js' %}"></script>
+    <script src="{% static 'js/search_tags.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'js/like_idiom.js' %}"></script>
     <link rel="stylesheet" href="{% static 'style.css' %}">
@@ -75,10 +77,31 @@
                 </div>
                 <div class="idiomcardbottom">
                     <span class="authorsubtitle">written by: <a class="nodecoration keepblue" href="/profile/{{idiom.user.id}}">{{idiom.user.firstname}} {{idiom.user.lastname}} </a> ({{idiom.created_at|date:'Y-m-d'}})</span>
-                    <div class="taglist">
-                        <div class="tag">tag</div>
-                        {% comment %} add first 2-3 tags {% endcomment %}
+                    
+                    <div class="tagcontainer">
+                        
+                        <div id="tag-list" class="taglist">
+                        
+                            {% for tag in idiom.tags.all %}
+                            <div class="tag">{{ tag.name }}</div>
+                            {% endfor %}
+                            <div class="tagsearch card">
+                                <input type="hidden" value="{{ idiom.id }}" id="idiom-id">
+                                <input class="tagsearchinput" type="text" id="search-bar" placeholder="tag" list="tag-options">
+                                <datalist id="tag-options">
+                                    <!-- Options will be dynamically added here by JavaScript -->
+                                </datalist>
+                                <button onclick="addtag({{ .idiom.id }})">Add Tag</button>
+                            </div>     
+                        </div>
+
+                          
+
+
                     </div>
+                    
+                    
+                    
                 </div>
 
             </div>
