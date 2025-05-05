@@ -45,11 +45,14 @@
             </div>
             <div class="search-bar-container">
                 <div class="search-bar">
-                    <form action="">
-                        {% csrf_token %}
-                        <input class="searchbox" type="text" name="search" placeholder="Search idioms">
-                        <input class="searchbutton" type="submit" value="search">
+                    <form action="{% url 'search' %}" method="GET">
+                        <input list="search-options" autocomplete="off" class="searchbox" id="search-bar-main" type="text" name="search" placeholder="search idioms">
+                        <datalist id="search-options">
+                            
+                        </datalist>
+                       <input class="searchbutton" type="submit" value="search">
                     </form>
+                    
                 </div>
             </div>
         

@@ -225,7 +225,7 @@ def search(request):
     context={
         'user':user,
         'results':idioms,
-        'idioms':Idiom.objects.all(),
+        'idioms':idioms,
         'tags':tags_with_counts,
     }
     return render(request,'explore.html',context)
@@ -344,7 +344,7 @@ def idiomtags(request):
     context={
         'user':user,
         'results':idioms,
-        'idioms':Idiom.objects.all(),
+        'idioms':Idiom.objects.none,
         'tags':tags_with_counts,
     }
     return render(request,'explore.html',context)

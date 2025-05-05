@@ -139,21 +139,23 @@
                         </div>
                     {% endif %}
 
-                <div class="addtranslation"> 
-                    <span>Add a Translation</span>
-                    <form class="card" action="/{{idiom.id}}/addtranslation" method="POST">
-                        {% csrf_token %}
-                        <input class="comment" type="text" name="text" >
-                        {% comment %} add an option dropdown with languages {% endcomment %}
-                        <select name="language" id="language">
-                            <option value="english">English</option>
-                            <option value="french">French</option>
-                            <option value="german">German</option>
-                            <option value="spanish">Spanish</option>
-                        </select>
-                        <input class="translationsubmit" type="submit" value="Add Translation">
-                    </form>
-                </div>
+                    {% if user != 'none' %}
+                    <div class="addtranslation"> 
+                        <span>Add a Translation</span>
+                        <form class="card" action="/{{idiom.id}}/addtranslation" method="POST">
+                            {% csrf_token %}
+                            <input class="comment" type="text" name="text" >
+                            {% comment %} add an option dropdown with languages {% endcomment %}
+                            <select class="languageselect" name="language" id="language">
+                                <option value="english">English</option>
+                                <option value="french">French</option>
+                                <option value="german">German</option>
+                                <option value="spanish">Spanish</option>
+                            </select>
+                            <input class="translationsubmit" type="submit" value="Add Translation">
+                        </form>
+                    </div>
+                    {% endif %}
             </div>
             
             
