@@ -19,12 +19,13 @@ urlpatterns = [
     path('search/',views.search, name='search'),
     path("<int:id>/addtranslation",views.addtranslation),
     path('like_idiom/<int:id>/', views.like_idiom, name='like_idiom'),
+    path('search_preview/<str:search>/', views.search_preview, name='search_preview'),
 
     path('add_tag/<str:tag>/<int:id>/',views.add_tag,name="add_tag"),
     path("search_tags/<str:search>/", views.search_tags, name="search_tags"),
     path('<int:id>/edit/',views.edit),
     path('<int:id>/delete/',views.delete),
-
+    path('tag/',views.idiomtags,name="tag"),
 
 
 ]

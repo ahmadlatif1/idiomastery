@@ -11,10 +11,17 @@ def serve_explore(request):
     if 'userid' in request.session:
         user=User.objects.get(id=request.session['userid'])
 
+    tags_with_counts = []
+    for tag in Tag.objects.all():
+        count = Idiom.objects.filter(tags=tag).count()
+        tags_with_counts.append({'tag': tag, 'count': count})
+
+    # Sort the tags based on the count in descending order
+    tags_with_counts = sorted(tags_with_counts, key=lambda x: x['count'], reverse=True)
     context={
         'user':user,
         'idioms':Idiom.objects.all(),
-        'tags':Tag.objects.all()
+        'tags':tags_with_counts,
     }
     return render(request, 'explore.html', context)
 
@@ -186,10 +193,11 @@ def edit(request, id):
 def search(request):
     
     query=''
-    if request.method == "  GET":
+    if request.method == "GET":
         query=request.GET.get('search')
     words=query.split(' ')
     idioms = Idiom.objects.none()
+    print("words: ",query)
     for word in words:
         idioms |= Idiom.objects.filter(phrase__icontains=word) | Idiom.objects.filter(meaning__icontains=word)
 
@@ -197,12 +205,23 @@ def search(request):
     if 'userid' in request.session:
         user=User.objects.get(id=request.session['userid'])
 
+
+    tags_with_counts = []
+    for tag in Tag.objects.all():
+        count = Idiom.objects.filter(tags=tag).count()
+        tags_with_counts.append({'tag': tag, 'count': count})
+
+    tags_with_counts = sorted(tags_with_counts, key=lambda x: x['count'], reverse=True)
+   
+        
+
+
     context={
         'user':user,
         'results':idioms,
         'idioms':Idiom.objects.all(),
+        'tags':tags_with_counts,
     }
-    print("idioms: ",idioms)
     return render(request,'explore.html',context)
 
 def addtranslation(request,id):
@@ -275,3 +294,51 @@ def search_tags(request,search):
         print("taglist",taglist)
         return JsonResponse({'tags': taglist}, status=200)
     return JsonResponse({'error': 'Invalid request method'}, status=400)
+
+def search_preview(request,search):
+    if request.method == "GET":
+        
+        words=search.split(' ')
+        idioms = Idiom.objects.none()
+        for word in words:
+            idioms |= Idiom.objects.filter(phrase__icontains=word) | Idiom.objects.filter(meaning__icontains=word)
+
+        result=[]
+        for idiom in idioms:
+            result.append({'id':idiom.id,'phrase':idiom.phrase})
+
+        print("result:",result)
+        return JsonResponse({'results': result}, status=200)
+    return JsonResponse({'error': 'Invalid request method'}, status=400)
+
+
+def idiomtags(request):
+        
+    if request.method == "GET":
+        query=request.GET.get('tag')
+    else: return redirect('/')
+    idioms = Idiom.objects.none()
+    print("words: ",query)
+    idioms=Tag.objects.get(name=query).idioms.all()
+    user='none'
+    if 'userid' in request.session:
+        user=User.objects.get(id=request.session['userid'])
+
+
+    tags_with_counts = []
+    for tag in Tag.objects.all():
+        count = Idiom.objects.filter(tags=tag).count()
+        tags_with_counts.append({'tag': tag, 'count': count})
+
+    tags_with_counts = sorted(tags_with_counts, key=lambda x: x['count'], reverse=True)
+   
+        
+
+
+    context={
+        'user':user,
+        'results':idioms,
+        'idioms':Idiom.objects.all(),
+        'tags':tags_with_counts,
+    }
+    return render(request,'explore.html',context)

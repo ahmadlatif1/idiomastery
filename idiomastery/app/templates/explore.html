@@ -12,6 +12,8 @@
     <title>Idiomastery</title>
     {% load static %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/search_preview.js' %}"></script>
+
     <script src="{% static 'js/like_idiom.js' %}"></script>
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
@@ -44,10 +46,13 @@
         <div class="search-bar-container">
             <div class="search-bar">
                 <form action="{% url 'search' %}" method="GET">
-                    <input class="searchbox" type="text" name="search" placeholder="search idioms">
-
-                    <input class="searchbutton" type="submit" value="search">
+                    <input list="search-options" autocomplete="off" class="searchbox" id="search-bar-main" type="text" name="search" placeholder="search idioms">
+                    <datalist id="search-options">
+                        
+                    </datalist>
+                   <input class="searchbutton" type="submit" value="search">
                 </form>
+                
             </div>
         </div>
     </header>
@@ -97,19 +102,25 @@
             <div class="widesection mainidiom">
     
     
-                {% if results %}
-                    <span>h</span>
-                {% endif %}
                 <div class="searchresults">
-    
-                </div>
+
+                {% if results %}
+                    <h2>Search results:</h2>
+
                 {% for idiom in results %}
-                <h2>result:</h2>
                 <div class="idiomcard card">
                     <div class="idiomhead">
                         <span class="idiom-phrase">{{idiom.phrase}}</span>
-                        <img src="" alt="" class="likebtn">
-                    </div>
+                        <div class="likesection">
+                            <button class="likebutton" id="idiom-like-button-{{ idiom.id }}" onclick="likeIdiom({{ idiom.id }})">
+                                {% if user in idiom.liked_by.all %}
+                                <i class="bi bi-heart-fill" style="font-size: 24px; color: red;"></i>
+                                {% else %}
+                                <i class="bi bi-heart" style="font-size: 24px;"></i>
+                                {% endif %}
+                            </button>
+                            <span id="idiom-score-{{ idiom.id }}">{{ idiom.score }}</span>
+                        </div>                    </div>
                     <div class="idiombody">
                         <span>Meaning: {{idiom.meaning}}</span>
                         {% if idiom.example != '' %}
@@ -121,13 +132,20 @@
                         <span><a class="keepblue nodecoration" href="/{{idiom.id}}">Read More</a></span>
                         <span class="authorsubtitle">written by: <a class="nodecoration keepblue" href="/profile/{{idiom.user.id}}">{{idiom.user.firstname}} {{idiom.user.lastname}} </a> ({{idiom.created_at|date:'Y-m-d'}})</span>
                         <div class="taglist">
-                            <div class="tag">tag</div>
+                            {% for tag in idiom.tags.all %}
+                            <form action="{% url 'tag' %}" method="GET">
+                                <input type="submit" name="tag" class="tag" value="{{ tag.name }}">
+                            </form>
+                            {% endfor %}
                             {% comment %} add first 2-3 tags {% endcomment %}
                         </div>
                     </div>
     
                 </div>
                 {% endfor %}
+                {% endif %}
+            </div>
+
                 {% for idiom in idioms %}
                 <div class="idiomcard card">
                     <div class="idiomhead">
@@ -154,7 +172,10 @@
                         <span><a class="keepblue nodecoration" href="/{{idiom.id}}">Read More</a></span>
                         <span class="authorsubtitle">written by: <a class="nodecoration keepblue" href="/profile/{{idiom.user.id}}">{{idiom.user.firstname}} {{idiom.user.lastname}} </a> ({{idiom.created_at|date:'Y-m-d'}})</span>
                         <div class="taglist">
-                            <div class="tag">tag</div>
+                            {% for tag in idiom.tags.all %}
+                            <form action="{% url 'tag' %}" method="GET">
+                                <input type="submit" name="tag" class="tag" value="{{ tag.name }}">
+                            </form>                            {% endfor %}
                             {% comment %} add first 2-3 tags {% endcomment %}
                         </div>
                     </div>
@@ -174,7 +195,12 @@
                 <div class="populartags">
                     <h1>Popular tags</h1>
                     <div class="taglist">
-                        <div class="tag">tag text</div>
+                        {% for item in tags %} 
+                        <form action="{% url 'tag' %}" method="GET">
+                            <input type="hidden" name="tag" value="{{item.tag.name}}">
+                            <input type="submit" class="tag" value="{{item.tag.name}} {{item.count}}">
+                        </form>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

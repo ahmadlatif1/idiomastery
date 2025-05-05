@@ -87,7 +87,7 @@
                             {% endfor %}
                             <div class="tagsearch card">
                                 <input type="hidden" value="{{ idiom.id }}" id="idiom-id">
-                                <input class="tagsearchinput" type="text" id="search-bar" placeholder="tag" list="tag-options">
+                                <input autocomplete="off" class="tagsearchinput" type="text" id="search-bar" placeholder="tag" list="tag-options">
                                 <datalist id="tag-options">
                                     <!-- Options will be dynamically added here by JavaScript -->
                                 </datalist>
