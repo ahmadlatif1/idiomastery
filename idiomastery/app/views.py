@@ -73,7 +73,7 @@ def serve_details(request,id):
     if idiom.translations.all():
         translations = idiom.translations.all()
     # need to add if idiom is liked
-
+    
     context={
         'user':user,
         'idiom':idiom,
@@ -81,7 +81,9 @@ def serve_details(request,id):
         'tags': tags,
         
         'liked': liked_idiom,
-        'related':Idiom.objects.filter(related=idiom.related)
+        'related':Idiom.objects.filter(related=idiom.related),
+        'similar':Idiom.objects.filter(tags__in=tags).exclude(id=id).distinct(),
+
         
     }
     print('related:',context['related'])
