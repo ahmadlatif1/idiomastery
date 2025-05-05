@@ -270,6 +270,22 @@ header {
 	color: #0645AD;
 }
 
+.likesection{
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	span{
+		min-width: 20px;
+	}
+}
+.likebutton{
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
 
 input {
 	padding: 10px;

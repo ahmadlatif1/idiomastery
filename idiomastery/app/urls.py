@@ -18,6 +18,9 @@ urlpatterns = [
     path('a/create',views.create),
     path('search/',views.search, name='search'),
     path("<int:id>/addtranslation",views.addtranslation),
+    path('like_idiom/<int:id>/', views.like_idiom, name='like_idiom'),
+    # path('unlike_idiom/<int:id>/', views.unlike_idiom, name='unlike_idiom'),
+
     
     path('<int:id>/edit/',views.edit),
     path('<int:id>/delete/',views.delete),
