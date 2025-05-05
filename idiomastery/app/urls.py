@@ -28,4 +28,5 @@ urlpatterns = [
     path('tag/',views.idiomtags,name="tag"),
 
 
+
 ]

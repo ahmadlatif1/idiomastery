@@ -1,7 +1,7 @@
 import bcrypt
 from django.shortcuts import redirect, render
 from app.models import *
-from django.http import JsonResponse
+from django.http import JsonResponse 
 
 # Create your views here.
 
