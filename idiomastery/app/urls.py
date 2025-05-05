@@ -24,6 +24,7 @@ urlpatterns = [
     path("search_tags/<str:search>/", views.search_tags, name="search_tags"),
     path('<int:id>/edit/',views.edit),
     path('<int:id>/delete/',views.delete),
+    
 
 
 
