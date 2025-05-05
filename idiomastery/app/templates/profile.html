@@ -72,7 +72,12 @@
                 <div class="idiomcardbottom">
                     <span><a href="/{{idiom.id}}">Read More</a></span>
                     <div class="taglist">
-                        <div class="tag">tag</div>
+
+                        {% for tag in idiom.tags.all %}
+                        <form action="{% url 'tag' %}" method="GET">
+                            <input type="submit" name="tag" class="tag" value="{{ tag.name }}">
+                        </form>
+                        {% endfor %}
                         {% comment %} add first 2-3 tags {% endcomment %}
                     </div>
                 </div>
