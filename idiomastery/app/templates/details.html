@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">    <title>Idiomastery</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <title>Idiomastery</title>
     {% load static %}
     <script src="{% static 'js/add_tag.js' %}"></script>
@@ -153,12 +155,12 @@
             
         </div>
         <div class="sidesection add-and-tags">
-            <div class="card add-idiom-card">
+            <div class="card add-idiom-card p-3 text-center animated-background ">
                 <span>do you have an idiom?</span>
                 {% if user == 'none' %}
-                <a class="submitbutton" href="/login/"> Add it Here!</a>
+                <a class="submitbuttonbg-dark bg-opacity-50 text-white" href="/login/"> Add it Here!</a>
                 {% else %}
-                <a class="submitbutton" href="/create/"> Add it Here!</a>
+                <a class="submitbutton bg-dark bg-opacity-50 text-white" href="/create/"> Add it Here!</a>
                 {% endif %}            </div>
             <div class='tags_container'>
                 <div class="sidecardcontainer">
