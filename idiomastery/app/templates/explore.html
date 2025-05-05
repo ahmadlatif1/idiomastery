@@ -51,133 +51,136 @@
             </div>
         </div>
     </header>
-    <div class='carousel-container text-center'>
-        <div id="demo" class="carousel carousel slide mx-auto" data-bs-ride="carousel" >
-
-            <!-- Indicators/dots -->
-            <div class="carousel-indicators">
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" ></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-            </div>
-            
-            <!-- The slideshow/carousel -->
-            <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{% static "img/idiomi.jpg" %}" alt="Los Angeles" class="d-block mx-auto w-100 ">
-                <div class="carousel-caption d-none d-md-block">
-                <h3 class=' bg-dark bg-opacity-50 text-white'>Idiom of the day</h3>
+    <div class="body-container">
+        <div class='carousel-container text-center'>
+            <div id="demo" class="carousel carousel slide mx-auto" data-bs-ride="carousel" >
+    
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators">
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" ></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
                 </div>
+                
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static "img/idiomi.jpg" %}" alt="Los Angeles" class="d-block mx-auto w-100 ">
+                    <div class="carousel-caption d-none d-md-block">
+                    <h3 class=' bg-dark bg-opacity-50 text-white'>Idiom of the day</h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'img/palestine.jpg' %}" alt="Chicago" class="d-block mx-auto w-100" >
+                    <div class="carousel-caption">
+                    <h3 class='c bg-dark bg-opacity-50 text-white'>Palestinian Proverbs</h3>
+                    </div> 
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static "img/idiom3.jpg" %}" alt="New York" class="d-block ">
+                    <div class="carousel-caption">
+                    <h3 class='bg-dark bg-opacity-50 text-white'>Idioms in the coding world</h3>
+                    </div>  
+                </div>
+                </div>
+                
+                <!-- Left and right controls/icons -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                </button>
             </div>
-            <div class="carousel-item">
-                <img src="{% static 'img/palestine.jpg' %}" alt="Chicago" class="d-block mx-auto w-100" >
-                <div class="carousel-caption">
-                <h3 class='c bg-dark bg-opacity-50 text-white'>Palestinian Proverbs</h3>
-                </div> 
-            </div>
-            <div class="carousel-item">
-                <img src="{% static "img/idiom3.jpg" %}" alt="New York" class="d-block ">
-                <div class="carousel-caption">
-                <h3 class='bg-dark bg-opacity-50 text-white'>Idioms in the coding world</h3>
-                </div>  
-            </div>
-            </div>
-            
-            <!-- Left and right controls/icons -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-            </button>
         </div>
-    </div>
-    <div class="explorebody bodylimit" >
-        <div class="widesection mainidiom">
-
-
-            {% if results %}
-                <span>h</span>
-            {% endif %}
-            <div class="searchresults">
-
-            </div>
-            {% for idiom in results %}
-            <h2>result:</h2>
-            <div class="idiomcard card">
-                <div class="idiomhead">
-                    <span class="idiom-phrase">{{idiom.phrase}}</span>
-                    <img src="" alt="" class="likebtn">
-                </div>
-                <div class="idiombody">
-                    <span>Meaning: {{idiom.meaning}}</span>
-                    {% if idiom.example != '' %}
-                    <span>Example: {{idiom.example}}</span>
-
-                    {% endif %}
-                </div>
-                <div class="idiomcardbottom">
-                    <span><a class="keepblue nodecoration" href="/{{idiom.id}}">Read More</a></span>
-                    <span class="authorsubtitle">written by: <a class="nodecoration keepblue" href="/profile/{{idiom.user.id}}">{{idiom.user.firstname}} {{idiom.user.lastname}} </a> ({{idiom.created_at|date:'Y-m-d'}})</span>
-                    <div class="taglist">
-                        <div class="tag">tag</div>
-                        {% comment %} add first 2-3 tags {% endcomment %}
-                    </div>
-                </div>
-
-            </div>
-            {% endfor %}
-            {% for idiom in idioms %}
-            <div class="idiomcard card">
-                <div class="idiomhead">
-                    <span class="idiom-phrase">{{idiom.phrase}}</span>
-                    <div class="likesection">
-                        <button class="likebutton" id="idiom-like-button-{{ idiom.id }}" onclick="likeIdiom({{ idiom.id }})">
-                            {% if user in idiom.liked_by.all %}
-                            <i class="bi bi-heart-fill" style="font-size: 24px; color: red;"></i>
-                            {% else %}
-                            <i class="bi bi-heart" style="font-size: 24px;"></i>
-                            {% endif %}
-                        </button>
-                        <span id="idiom-score-{{ idiom.id }}">{{ idiom.score }}</span>
-                    </div>
-                </div>
-                <div class="idiombody">
-                    <span>Meaning: {{idiom.meaning}}</span>
-                    {% if idiom.example != '' %}
-                    <span>Example: {{idiom.example}}</span>
-
-                    {% endif %}
-                </div>
-                <div class="idiomcardbottom">
-                    <span><a class="keepblue nodecoration" href="/{{idiom.id}}">Read More</a></span>
-                    <span class="authorsubtitle">written by: <a class="nodecoration keepblue" href="/profile/{{idiom.user.id}}">{{idiom.user.firstname}} {{idiom.user.lastname}} </a> ({{idiom.created_at|date:'Y-m-d'}})</span>
-                    <div class="taglist">
-                        <div class="tag">tag</div>
-                        {% comment %} add first 2-3 tags {% endcomment %}
-                    </div>
-                </div>
-
-            </div>
-            {% endfor %}
-        </div>
-        <div class="sidesection">
-            <div class="card add-idiom-card">
-                <span>Do you have an idiom?</span>
-                {% if user == 'none' %}
-                <a class="submitbutton" href="/login/"> Add it Here!</a>
-                {% else %}
-                <a class="submitbutton" href="/create/"> Add it Here!</a>
+        <div class="explorebody bodylimit" >
+            <div class="widesection mainidiom">
+    
+    
+                {% if results %}
+                    <span>h</span>
                 {% endif %}
+                <div class="searchresults">
+    
+                </div>
+                {% for idiom in results %}
+                <h2>result:</h2>
+                <div class="idiomcard card">
+                    <div class="idiomhead">
+                        <span class="idiom-phrase">{{idiom.phrase}}</span>
+                        <img src="" alt="" class="likebtn">
+                    </div>
+                    <div class="idiombody">
+                        <span>Meaning: {{idiom.meaning}}</span>
+                        {% if idiom.example != '' %}
+                        <span>Example: {{idiom.example}}</span>
+    
+                        {% endif %}
+                    </div>
+                    <div class="idiomcardbottom">
+                        <span><a class="keepblue nodecoration" href="/{{idiom.id}}">Read More</a></span>
+                        <span class="authorsubtitle">written by: <a class="nodecoration keepblue" href="/profile/{{idiom.user.id}}">{{idiom.user.firstname}} {{idiom.user.lastname}} </a> ({{idiom.created_at|date:'Y-m-d'}})</span>
+                        <div class="taglist">
+                            <div class="tag">tag</div>
+                            {% comment %} add first 2-3 tags {% endcomment %}
+                        </div>
+                    </div>
+    
+                </div>
+                {% endfor %}
+                {% for idiom in idioms %}
+                <div class="idiomcard card">
+                    <div class="idiomhead">
+                        <span class="idiom-phrase">{{idiom.phrase}}</span>
+                        <div class="likesection">
+                            <button class="likebutton" id="idiom-like-button-{{ idiom.id }}" onclick="likeIdiom({{ idiom.id }})">
+                                {% if user in idiom.liked_by.all %}
+                                <i class="bi bi-heart-fill" style="font-size: 24px; color: red;"></i>
+                                {% else %}
+                                <i class="bi bi-heart" style="font-size: 24px;"></i>
+                                {% endif %}
+                            </button>
+                            <span id="idiom-score-{{ idiom.id }}">{{ idiom.score }}</span>
+                        </div>
+                    </div>
+                    <div class="idiombody">
+                        <span>Meaning: {{idiom.meaning}}</span>
+                        {% if idiom.example != '' %}
+                        <span>Example: {{idiom.example}}</span>
+    
+                        {% endif %}
+                    </div>
+                    <div class="idiomcardbottom">
+                        <span><a class="keepblue nodecoration" href="/{{idiom.id}}">Read More</a></span>
+                        <span class="authorsubtitle">written by: <a class="nodecoration keepblue" href="/profile/{{idiom.user.id}}">{{idiom.user.firstname}} {{idiom.user.lastname}} </a> ({{idiom.created_at|date:'Y-m-d'}})</span>
+                        <div class="taglist">
+                            <div class="tag">tag</div>
+                            {% comment %} add first 2-3 tags {% endcomment %}
+                        </div>
+                    </div>
+    
+                </div>
+                {% endfor %}
             </div>
-            <div class="populartags">
-                <h1>Popular tags</h1>
-                <div class="taglist">
-                    <div class="tag">tag text</div>
+            <div class="sidesection">
+                <div class="card add-idiom-card  p-3 text-center animated-background ">
+                    <span>Do you have an idiom?</span>
+                    {% if user == 'none' %}
+                    <a class="submitbutton bg-dark bg-opacity-50 text-white" href="/login/"> Add it Here!</a>
+                    {% else %}
+                    <a class="submitbutton bg-dark bg-opacity-30 text-white" href="/create/"> Add it Here!</a>
+                    {% endif %}
+                </div>
+                <div class="populartags">
+                    <h1>Popular tags</h1>
+                    <div class="taglist">
+                        <div class="tag">tag text</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
     <footer>
         <div>
             <p>Social Media:</p>
