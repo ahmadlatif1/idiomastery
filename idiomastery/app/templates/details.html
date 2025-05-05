@@ -34,21 +34,25 @@
                 {% else %}
                 <i class="bi bi-person-fill" style="font-size:20px;"></i>
                 <a href="/profile/{{user.id}}">{{user.firstname}} {{user.lastname}}</a>
+
                 {% if user.id != 'none' %}
 				<a href="/a/logout">log out</a>
 				{% endif %}
                 {% endif %}
             </div>
-        </div>
-        <div class="search-bar-container">
+        </div><div class="search-bar-container">
             <div class="search-bar">
-                <form action="">
-                    {% csrf_token %}
-                    <input class="searchbox" type="text" name="search" placeholder="Search idioms">
-                    <input class="searchbutton" type="submit" value="search">
+                <form action="{% url 'search' %}" method="GET">
+                    <input list="search-options" autocomplete="off" class="searchbox" id="search-bar-main" type="text" name="search" placeholder="search idioms">
+                    <datalist id="search-options">
+                        
+                    </datalist>
+                   <input class="searchbutton" type="submit" value="search">
                 </form>
+                
             </div>
         </div>
+
     </header>
     <div class="detailbody bodylimit" >
         <div class="widesection">
@@ -139,21 +143,25 @@
                         </div>
                     {% endif %}
 
-                <div class="addtranslation"> 
-                    <span>Add a Translation</span>
-                    <form class="card" action="/{{idiom.id}}/addtranslation" method="POST">
-                        {% csrf_token %}
-                        <input class="comment" type="text" name="text" >
-                        {% comment %} add an option dropdown with languages {% endcomment %}
-                        <select name="language" id="language">
-                            <option value="english">English</option>
-                            <option value="french">French</option>
-                            <option value="german">German</option>
-                            <option value="spanish">Spanish</option>
-                        </select>
-                        <input class="translationsubmit" type="submit" value="Add Translation">
-                    </form>
-                </div>
+                    {% if user != 'none' %}
+                    <div class="addtranslation"> 
+                        <span>Add a Translation</span>
+                        <form class="languageselectcontainer card" action="/{{idiom.id}}/addtranslation" method="POST">
+                            {% csrf_token %}
+                            <input class="comment" type="text" name="text" >
+                            {% comment %} add an option dropdown with languages {% endcomment %}
+                            <select class="languageselect" name="language" id="language">
+                                <option value="english">English</option>
+                                <option value="french">French</option>
+                                <option value="german">German</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="arabic">Arabic</option>
+                                
+                            </select>
+                            <input class="translationsubmit" type="submit" value="Add Translation">
+                        </form>
+                    </div>
+                    {% endif %}
             </div>
             
             
@@ -170,16 +178,19 @@
                 <div class="sidecardcontainer">
                 <span>Similarly Tagged</span>
                 <div class="sidecard card">
+                    {% for item in similar %}
+                    <a href="{{item.id}}" class=" keepblue">{{item.phrase}}</a>
 
+                    {% endfor %}
                 </div>
                 </div>
-                <div class="sidecardcontainer">
+                {% comment %} <div class="sidecardcontainer">
                 <span>Equivalent Idioms</span>
                 <div class="sidecard card">
                     {% for item in related %}
-                    <a href="item.id" class="nodecoration keepblue">{{item.phrase}}</a>
+                    <a href="{{item.id}}" class=" keepblue">{{item.phrase}}</a>
                     {% endfor %}
-                </div>
+                </div> {% endcomment %}
                 </div>
         </div>
             

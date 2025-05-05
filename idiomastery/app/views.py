@@ -21,9 +21,12 @@ def serve_explore(request):
     
     # Sort the tags based on the count in descending order
     tags_with_counts = sorted(tags_with_counts, key=lambda x: x['count'], reverse=True)
+
+
+    top_idioms = Idiom.objects.order_by('-score')[:5]
     context={
         'user':user,
-        'idioms':Idiom.objects.all(),
+        'idioms':top_idioms,
         'sessionid':sessionid,
         'tags':tags_with_counts,
     }
@@ -38,7 +41,7 @@ def serve_registration(request):
 
 def serve_profile(request,id):
     user_profile=User.objects.get(id=id)
-    idioms=Idiom.objects.filter(user=user_profile)
+    idioms=Idiom.objects.filter(user=user_profile).order_by('-created_at')
     favorites=Idiom.objects.filter(liked_by__user=user_profile)
 
     context={
@@ -71,7 +74,7 @@ def serve_details(request,id):
     if idiom.translations.all():
         translations = idiom.translations.all()
     # need to add if idiom is liked
-
+    
     context={
         'user':user,
         'idiom':idiom,
@@ -79,7 +82,9 @@ def serve_details(request,id):
         'tags': tags,
         
         'liked': liked_idiom,
-        'related':Idiom.objects.filter(related=idiom.related)
+        'related':Idiom.objects.filter(related=idiom.related),
+        'similar':Idiom.objects.filter(tags__in=tags).exclude(id=id).distinct(),
+
         
     }
     print('related:',context['related'])
@@ -225,7 +230,7 @@ def search(request):
     context={
         'user':user,
         'results':idioms,
-        'idioms':Idiom.objects.all(),
+        'idioms':idioms,
         'tags':tags_with_counts,
     }
     return render(request,'explore.html',context)
@@ -344,7 +349,7 @@ def idiomtags(request):
     context={
         'user':user,
         'results':idioms,
-        'idioms':Idiom.objects.all(),
+        'idioms':Idiom.objects.none,
         'tags':tags_with_counts,
     }
     return render(request,'explore.html',context)

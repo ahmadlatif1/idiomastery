@@ -136,6 +136,12 @@ footer{
 	}
 }
 
+.sidecardcontainer .sidecard{
+	display: flex;
+	flex-flow: column;
+	gap: 5px;
+	padding: 10px;
+}
 
 .add-idiom-card {
 	display: flex;
@@ -531,6 +537,7 @@ input {
 }
 
 .profilecard{
+	margin-top: 60px;
 	display: flex;
 	flex-flow: column;
 	align-items: center;
@@ -818,3 +825,11 @@ align-items: center; */
   }
 
   
+.languageselect{
+	font-size: 0.5em;
+}
+
+.languageselectcontainer{
+	display: flex;
+	gap: 5px;
+}
