@@ -29,7 +29,7 @@ body {
 
 .registerpage,
 .loginpage {
-	background-color: #FFFDF6;
+	background-color: #fffbec;
 }
 
 .aboutpage,
@@ -37,7 +37,7 @@ body {
 .explorepage,
 .profilepage,
 .detailpage {
-	background-color: #FAF6E9;
+	background-color: #fffbec;
 }
 
 .card {
@@ -183,6 +183,11 @@ footer{
 		}
 	}
 
+}
+.add-idiom-card span{
+	color: white;
+	font-size:larger;
+	font-weight: 600;
 }
 
 .tag {
@@ -334,8 +339,8 @@ input {
 	text-decoration: none;
 	color: black;
 	padding: 10px;
-	background-color: #f0f1c5;
-	border: 2px solid black;
+	background-color: #fbfce3;
+	/* border: 1px solid black; */
 	cursor: pointer;
 	font-size: 16px;
 	border-radius: 10px;
@@ -729,10 +734,32 @@ input {
 }
 
 .carousel-container{
-width: 1000px;
-height: 300px;
-overflow: hidden;
+	width: 1000px;
+	height: 300px;
+	overflow: hidden;
+	box-shadow: 0px 15px 15px 0px #a7b492; ;
 /* justify-content: center;
 align-items: center; */
 }
 
+
+  .animated-background {
+	background: linear-gradient(270deg, #8ea1f5, #5ea85b, #b68bd0);
+	background-size: 600% 600%;
+	animation: animatedGradient 8s ease infinite;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+  }
+  
+  /* Keyframes for smooth gradient shift */
+  @keyframes animatedGradient {
+	0% {
+	  background-position: 0% 50%;
+	}
+	50% {
+	  background-position: 100% 50%;
+	}
+	100% {
+	  background-position: 0% 50%;
+	}
+  }
