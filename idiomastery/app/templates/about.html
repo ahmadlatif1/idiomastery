@@ -27,7 +27,9 @@
                 {% else %}
                 <i class="bi bi-person-fill" style="font-size:20px;"></i>
                 <a href="/profile/{{user.id}}">{{user.firstname}} {{user.lastname}}</a>
+                 
                 {% if user.id != 'none' %}
+                <span class="separator">|</span>
 				<a href="/a/logout">log out</a>
 				{% endif %}
                 {% endif %}
@@ -54,8 +56,7 @@
         </div>
         <div div class="sidesection">
           <div class="siteinfo card">
-			<p>This website has been running since(insert time)</p>
-			<p>something about the site</p>
+			<p>This website has been running since <p>(2025-5-5)</p></p>
           </div>
         </div>
       </div>

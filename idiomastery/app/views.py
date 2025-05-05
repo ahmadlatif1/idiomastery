@@ -21,6 +21,8 @@ def serve_explore(request):
     
     # Sort the tags based on the count in descending order
     tags_with_counts = sorted(tags_with_counts, key=lambda x: x['count'], reverse=True)
+
+
     context={
         'user':user,
         'idioms':Idiom.objects.all(),
@@ -38,7 +40,7 @@ def serve_registration(request):
 
 def serve_profile(request,id):
     user_profile=User.objects.get(id=id)
-    idioms=Idiom.objects.filter(user=user_profile)
+    idioms=Idiom.objects.filter(user=user_profile).order_by('-created_at')
     favorites=Idiom.objects.filter(liked_by__user=user_profile)
 
     context={

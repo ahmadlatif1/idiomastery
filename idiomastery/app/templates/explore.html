@@ -38,6 +38,7 @@
                     <i class="bi bi-person-fill" style="font-size:20px;"></i>
                     <a href="/profile/{{user.id}}">{{user.firstname}} {{user.lastname}}</a>
                     {% if user.id != 'none' %}
+                    <span class="separator">|</span>
                     <a href="/a/logout">log out</a>
                     {% endif %}
                     {% endif %}
