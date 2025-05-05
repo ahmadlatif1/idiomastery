@@ -34,7 +34,7 @@
                 {% else %}
                 <i class="bi bi-person-fill" style="font-size:20px;"></i>
                 <a href="/profile/{{user.id}}">{{user.firstname}} {{user.lastname}}</a>
-                {% if user.id == sessionid %}
+                {% if user.id != 'none' %}
 				<a href="/a/logout">log out</a>
 				{% endif %}
                 {% endif %}
@@ -55,7 +55,7 @@
             
             <div class="idiomcard card">
                 <div class="idiomhead">
-                    <span class="idiom-phrase">{{idiom.phrase}}</span>
+                    <span class="idiom-phrase">{{idiom.phrase}} <a class="" style='color:black; font-size:0.8em' href="/edit/{{idiom.id}}">🖉</a></span>
                     
                     <div class="likesection">
                         <button class="likebutton" id="idiom-like-button-{{ idiom.id }}" onclick="likeIdiom({{ idiom.id }})">  
@@ -82,20 +82,23 @@
                     
                     <div class="tagcontainer">
                         
+                        <div class="tagsearch card">
+                            <input type="hidden" value="{{ idiom.id }}" id="idiom-id">
+                            <input autocomplete="off" class="tagsearchinput" type="text" id="search-bar" placeholder="tag" list="tag-options">
+                            <datalist id="tag-options">
+                                <!-- Options will be dynamically added here by JavaScript -->
+                            </datalist>
+                            <button onclick="addtag({{ .idiom.id }})">Add Tag</button>
+                        </div>     
+                        
                         <div id="tag-list" class="taglist">
+                            
                         
                             {% for tag in idiom.tags.all %}
                             <form action="{% url 'tag' %}" method="GET">
                                 <input type="submit" name="tag" class="tag" value="{{ tag.name }}">
-                            </form>                            {% endfor %}
-                            <div class="tagsearch card">
-                                <input type="hidden" value="{{ idiom.id }}" id="idiom-id">
-                                <input autocomplete="off" class="tagsearchinput" type="text" id="search-bar" placeholder="tag" list="tag-options">
-                                <datalist id="tag-options">
-                                    <!-- Options will be dynamically added here by JavaScript -->
-                                </datalist>
-                                <button onclick="addtag({{ .idiom.id }})">Add Tag</button>
-                            </div>     
+                            </form>                           
+                            {% endfor %}
                         </div>
 
                           

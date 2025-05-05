@@ -19,6 +19,7 @@
 
 </head>
 <body class="explorepage"> 
+
     <header>
         <div class="header">
             <div class="header-start">
@@ -53,8 +54,29 @@
                    <input class="searchbutton" type="submit" value="search">
                 </form>
                 
+                <div class="auth-link">
+                    {% if user == 'none' %}
+                    <i class="bi bi-person-fill" style="font-size:20px;"></i>
+                    <a href="/login/">Sign In</a>
+                    {% else %}
+                    <i class="bi bi-person-fill" style="font-size:20px;"></i>
+                    <a href="/profile/{{user.id}}">{{user.firstname}} {{user.lastname}}</a>
+                    {% if user.id != 'none' %}
+                    <a href="/a/logout">log out</a>
+                    {% endif %}
+                    {% endif %}
+                </div>
             </div>
-        </div>
+            <div class="search-bar-container">
+                <div class="search-bar">
+                    <form action="">
+                        {% csrf_token %}
+                        <input class="searchbox" type="text" name="search" placeholder="Search idioms">
+                        <input class="searchbutton" type="submit" value="search">
+                    </form>
+                </div>
+            </div>
+        
     </header>
     <div class="body-container">
         <div class='carousel-container text-center'>

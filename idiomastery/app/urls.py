@@ -27,6 +27,8 @@ urlpatterns = [
     path('<int:id>/delete/',views.delete),
     path('tag/',views.idiomtags,name="tag"),
 
+    path('edit/<int:id>/',views.serve_edit),
+    path('a/edit/<int:id>/',views.edit_idiom),
 
 
 ]

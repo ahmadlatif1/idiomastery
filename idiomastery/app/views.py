@@ -8,19 +8,23 @@ from django.http import JsonResponse
 
 def serve_explore(request):
     user='none'
+    sessionid=''
     if 'userid' in request.session:
         user=User.objects.get(id=request.session['userid'])
+        sessionid=request.session['userid']
 
     tags_with_counts = []
     for tag in Tag.objects.all():
         count = Idiom.objects.filter(tags=tag).count()
         tags_with_counts.append({'tag': tag, 'count': count})
 
+    
     # Sort the tags based on the count in descending order
     tags_with_counts = sorted(tags_with_counts, key=lambda x: x['count'], reverse=True)
     context={
         'user':user,
         'idioms':Idiom.objects.all(),
+        'sessionid':sessionid,
         'tags':tags_with_counts,
     }
     return render(request, 'explore.html', context)
@@ -84,8 +88,10 @@ def serve_details(request,id):
 
 def serve_about(request):
     user='none'
+    
     if 'userid' in request.session:
         user=User.objects.get(id=request.session['userid'])
+        
 
     return render(request, 'about.html', {'user':user})
 
@@ -342,3 +348,33 @@ def idiomtags(request):
         'tags':tags_with_counts,
     }
     return render(request,'explore.html',context)
+
+def serve_edit(request,id):
+    user='none'
+    if 'userid' in request.session:
+        user=User.objects.get(id=request.session['userid'])
+    
+    idiom=Idiom.objects.get(id=id)
+    context={
+        'idiom':idiom,
+        'user':user,
+    }
+    return render(request, 'edit.html', context)
+
+
+def edit_idiom(request,id):
+
+    errors=Idiom.objects.idiom_validator(post=request.POST)
+    if len(errors)>0:
+        print(errors)
+        return render( request, 'edit.html',{"errors": errors})
+    
+    idiom=Idiom.objects.get(id=id)
+    idiom.phrase=request.POST['phrase']
+    idiom.meaning=request.POST['meaning']
+    idiom.example=request.POST['example']
+    idiom.origin=request.POST['origin']
+    idiom.save()
+    return redirect(f"/{id}")
+
+
