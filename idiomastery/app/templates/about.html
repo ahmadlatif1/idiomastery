@@ -12,7 +12,7 @@
     <header>
         <div class="header">
             <div class="header-start">
-				<a class="logo" href="/">IDIOMASTERY</a>
+				<a class="logo" href="/"><img src="{% static 'img/idiomlogo.png'%}" alt=""></a>
                 <nav class="nav-links">
                 <a href="/about/">About</a>
                 <span class="separator">|</span>
@@ -37,7 +37,7 @@
             <div class="search-bar">
                 <form action="">
                     {% csrf_token %}
-                    <input class="searchbox" type="text" name="search" placeholder="Search idioms">
+                    <input class="searchbox" type="text" name="search" placeholder="search idioms">
                     <input class="searchbutton" type="submit" value="search">
                 </form>
             </div>
