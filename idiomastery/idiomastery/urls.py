@@ -17,6 +17,28 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from app.models import User, Idiom, Translation, Tag, LikedIdioms
+
+class UserAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(User,UserAdmin)
+
+class IdiomAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Idiom, IdiomAdmin)
+
+class TranslationAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Translation, TranslationAdmin)
+
+class TagAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Tag, TagAdmin)
+
+class LikedIdiomsAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(LikedIdioms, LikedIdiomsAdmin)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
