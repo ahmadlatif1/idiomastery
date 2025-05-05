@@ -63,6 +63,7 @@ class Idiom(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
     related=models.IntegerField(default=0)
     language=models.CharField(default="English")
+    
     objects=IdiomManager()
 
 class Translation(models.Model):
@@ -79,3 +80,8 @@ class Tag(models.Model):
     created_at=models.DateTimeField(auto_now_add=True) 
     updated_at=models.DateTimeField(auto_now=True)
 
+class LikedIdioms(models.Model):
+    user = models.ForeignKey(User, related_name="liked_idioms", on_delete=models.CASCADE)
+    idiom = models.ForeignKey(Idiom, related_name="liked_by", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

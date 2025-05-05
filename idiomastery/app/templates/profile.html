@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <title>Idiomastery</title>
     {% load static %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/like_idiom.js' %}"></script>
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
@@ -53,8 +55,46 @@
             <div class="idiomcard card">
                 <div class="idiomhead">
                     <span class="idiom-phrase">{{idiom.phrase}}</span>
-                    <i class="bi bi-heart" style="font-size: 24px;"></i>
+                    <div class="likesection">
+                        <button class="likebutton" id="idiom-like-button-{{ idiom.id }}" onclick="likeIdiom({{ idiom.id }})">  
+                            {% if liked %}
+                            <i class="bi bi-heart-fill" style="font-size: 24px; color: red;"></i>
+                            {% else %}
+                            <i class="bi bi-heart" style="font-size: 24px;"></i>
+                            {% endif %}
+                        </button>
+                        <span id="idiom-score-{{ idiom.id }}">{{ idiom.score }}</span>
+                    </div>                </div>
+                <div class="idiombody">
+                    <span>{{idiom.meaning}}</span>
+                    <span>{{idiom.example}}</span>
                 </div>
+                <div class="idiomcardbottom">
+                    <span><a href="/{{idiom.id}}">Read More</a></span>
+                    <div class="taglist">
+                        <div class="tag">tag</div>
+                        {% comment %} add first 2-3 tags {% endcomment %}
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+
+            <h1>Favorites:</h1>
+            {% for idiom in favorites %}
+            <div class="idiomcard card">
+                <div class="idiomhead">
+                    <span class="idiom-phrase">{{idiom.phrase}}</span>
+                    <div class="likesection">
+                        <button class="likebutton" id="idiom-like-button-{{ idiom.id }}" onclick="likeIdiom({{ idiom.id }})">  
+                            {% if liked %}
+                            <i class="bi bi-heart-fill" style="font-size: 24px; color: red;"></i>
+                            {% else %}
+                            <i class="bi bi-heart" style="font-size: 24px;"></i>
+                            {% endif %}
+                        </button>
+                        <span id="idiom-score-{{ idiom.id }}">{{ idiom.score }}</span>
+                    </div>                </div>
                 <div class="idiombody">
                     <span>{{idiom.meaning}}</span>
                     <span>{{idiom.example}}</span>

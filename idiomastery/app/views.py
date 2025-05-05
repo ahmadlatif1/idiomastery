@@ -1,6 +1,7 @@
 import bcrypt
 from django.shortcuts import redirect, render
 from app.models import *
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -25,10 +26,15 @@ def serve_registration(request):
     return render(request, 'registration.html', {})
 
 def serve_profile(request,id):
+    user_profile=User.objects.get(id=id)
+    idioms=Idiom.objects.filter(user=user_profile)
+    favorites=Idiom.objects.filter(liked_by__user=user_profile)
+
     context={
-        'user':User.objects.get(id=id),
-        'idioms':Idiom.objects.filter(user=id),
-        'sessionid':''
+        'user':user_profile,
+        'idioms':idioms,
+        'sessionid':'',
+        'favorites':favorites,
     }
     if 'userid' in request.session:
         context['sessionid']=request.session['userid']
@@ -40,20 +46,25 @@ def serve_profile(request,id):
 def serve_details(request,id):
     
     user='none'
+    liked_idiom=False
     if 'userid' in request.session:
         user=User.objects.get(id=request.session['userid'])
+        liked_idiom = LikedIdioms.objects.filter(user=user, idiom=idiom).exists()
+
 
     idiom=Idiom.objects.get(id=id)
 
     translations='none'
     if idiom.translations.all():
         translations = idiom.translations.all()
+    # need to add if idiom is liked
 
     context={
         'user':user,
         'idiom':idiom,
         'translations':translations,
-
+        
+        'liked': liked_idiom,
         'related':Idiom.objects.filter(related=idiom.related)
         
     }
@@ -201,3 +212,31 @@ def addtranslation(request,id):
 
 
     return redirect(f"/{id}")
+
+
+# a like function that increases the score of an idiom, iit should be called by ajax
+
+def like_idiom(request, id):
+
+    if 'userid' not in request.session:
+        return JsonResponse({'error': 'User not logged in'}, status=401)
+    user = User.objects.get(id=request.session['userid'])
+    idiom = Idiom.objects.get(id=id)
+    
+    # Check if the user has already liked the idiom
+    liked_idiom, created = LikedIdioms.objects.get_or_create(user=user, idiom=idiom)
+
+    if not created:
+        # Unlike the idiom
+        liked_idiom.delete()
+        idiom.score -= 1
+        liked = False  # Indicate that the user has unliked the idiom
+    else:
+        # Like the idiom
+        idiom.score += 1
+        liked = True  # Indicate that the user has liked the idiom
+    
+    idiom.save()
+    
+
+    return JsonResponse({'message': 'Idiom liked successfully', 'score': idiom.score, 'liked': liked}, status=200)
