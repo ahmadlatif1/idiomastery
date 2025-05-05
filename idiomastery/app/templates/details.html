@@ -135,6 +135,7 @@
                             <div class="languagelabel">{{item.language}}</div>
                             <div class="translationinner">
                                 <span>{{item.text}}</span>
+                                <span>like</span> 
 
                             </div>
                         </div>
@@ -175,7 +176,6 @@
                 {% endif %}            </div>
             <div class='tags_container'>
                 <div class="sidecardcontainer">
-                {% if similar.first %}
                 <span>Similarly Tagged</span>
                 <div class="sidecard card">
                     {% for item in similar %}
@@ -183,7 +183,6 @@
 
                     {% endfor %}
                 </div>
-                {% endif %}
                 </div>
                 {% comment %} <div class="sidecardcontainer">
                 <span>Equivalent Idioms</span>
