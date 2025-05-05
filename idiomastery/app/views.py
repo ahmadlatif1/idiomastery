@@ -23,9 +23,10 @@ def serve_explore(request):
     tags_with_counts = sorted(tags_with_counts, key=lambda x: x['count'], reverse=True)
 
 
+    top_idioms = Idiom.objects.order_by('-score')[:5]
     context={
         'user':user,
-        'idioms':Idiom.objects.all(),
+        'idioms':top_idioms,
         'sessionid':sessionid,
         'tags':tags_with_counts,
     }
