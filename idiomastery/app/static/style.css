@@ -778,6 +778,17 @@ input {
 	  }
 
 	
+	
+	.carousel-item img {
+		height: 250px;
+	  }
+	.carousel-control-prev-icon,
+	.carousel-control-next-icon {
+		width: 25px;
+		height: 25px;
+	  }
+
+	
 }
   
 .error{
